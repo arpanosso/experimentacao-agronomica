@@ -78,8 +78,10 @@ df %>%
   geom_line(aes(x=massa,y=modelo_de,linetype="Modelo"),color="red")+
   labs(x="Massa (kg)",y="Forca (N)",title = "Modelo Deterministico",
        fill="",linetype="")+
-  annotate(geom = "text",x=60,y=50,label = 'bold("aceleração = 2 m/s²")',
-            parse = TRUE) 
+  annotate(geom = "text",x=12,y=10,label = 'bold("aceleração = 2 m/s²")',
+            parse = TRUE) +
+  xlim(0,20) + ylim(0,50) +
+  theme_bw()
 ```
 
 $$Dados = Modelo$$
@@ -121,7 +123,8 @@ df %>%
   geom_point(aes(x=umidade,y=dados,fill="Dados"),color="black",size=3)+
   geom_line(aes(x=umidade,y=modelo_es,linetype="Modelo"),color="red")+
   labs(x="Umidade relativa em T0 (%)",y="Chuva em T1 (mm)",title = "Modelo Estocastico (Probabilistico)",
-       fill="",linetype="")
+       fill="",linetype="")+
+  theme_bw()
 ```
 $$Dados = Modelo + Ruído$$
 

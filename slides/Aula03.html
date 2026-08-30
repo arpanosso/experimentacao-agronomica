@@ -1,0 +1,1854 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Experimentação Agronômica</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Alan Rodrigo Panosso alan.panosso@unesp.br" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Experimentação Agronômica
+]
+.subtitle[
+## Probabilidade
+]
+.author[
+### Alan Rodrigo Panosso <a href="mailto:alan.panosso@unesp.br" class="email">alan.panosso@unesp.br</a>
+]
+.institute[
+### PPG Agronomia - CS e GMP
+]
+.date[
+### 31 de agosto de 2026
+]
+
+---
+
+
+
+
+
+class: middle, center, inverse
+
+# PROBABILIDADE
+
+---
+## Probabilidade 
+
+A Probabilidade permite analisar ou calcular as chances de obter determinado resultado diante de um experimento que dizemos aleatório. Por exemplo, qual a chance do número `\(5\)` sair no lançamento de um dado, ou no lançamento de `\(4\)` moedas, sair pelo menos uma face **Cara - H**.
+
+.pull-left[
+&lt;img src="https://images.pexels.com/photos/37534/cube-six-gambling-play-37534.jpeg?cs=srgb&amp;dl=pexels-pixabay-37534.jpg&amp;fm=jpg" style=" display: block; margin-left: auto; margin-right: auto;width: 55%"&gt;&lt;/img&gt;]
+
+.pull-right[
+&lt;img src="https://images.pexels.com/photos/210600/pexels-photo-210600.jpeg?cs=srgb&amp;dl=pexels-pixabay-210600.jpg&amp;fm=jpg" style=" display: block; margin-left: auto; margin-right: auto;width: 45%"&gt;&lt;/img&gt;]
+
+
+A partir disso, a probabilidade é determinada pela razão entre o número de eventos possíveis e o número de eventos favoráveis, sendo apresentada pela seguinte expressão:
+
+`$$P(E) = \frac{\text{nº de resultados favoráveis}}{\text{nº total de resultados possíveis}}$$`
+
+onde `\(P(E)\)` é a probabilidade de ocorrência do evento `\(E\)`.
+
+---
+
+### Exemplo:
+
+Um rebanho é composto por `\(100\)` animais, temos `\(20\)` indivíduos doentes e `\(80\)` sadios. 
+
+&lt;img src="https://images.pexels.com/photos/162801/cows-dairy-cows-milk-food-162801.jpeg?cs=srgb&amp;dl=pexels-pixabay-162801.jpg&amp;fm=jpg" style=" display: block; margin-left: auto; margin-right: auto;width: 40%"&gt;&lt;/img&gt;
+
+&gt; Qual a probabilidade de, em uma amostra aleatória simples de `\(5\)` animais, selecionarmos `\(2\)` animais doentes e `\(3\)` animais sadios?
+
+---
+
+Para respondermos essa questão precisaremos calcular:
+
+
+
+#### `\(\text{nº de resultados favoráveis}\)`
+
+Ou seja, de quantas maneiras poderemos escolher `\(2\)` animais em animais `\(20\)` doentes e `\(3\)` animais em `\(80\)` animais sadios.
+
+
+
+#### `\(\text{nº total de resultados possíveis}\)`
+
+De quantas maneiras poderemos escolher `\(5\)` animais (independentemente de serem sadios ou doentes) em um total de `\(100\)` animais.
+
+---
+
+## Análise Combinatória e Métodos de Numeração
+
+Portanto, para calcularmos a probabilidade do evento será necessário relembrarmos os conceitos de métodos de numeração e análise combinatória (Permutações, Arranjos e Combinações).
+
+
+&lt;img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExaXlwbnBoZTJqMmFjNGtqenBuNWs0aG9vejliMDBhZmozbGo5dzFkZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/bG5rDPx76wHMZtsXmr/giphy.gif" style=" display: block; margin-left: auto; margin-right: auto;width: 45%"&gt;&lt;/img&gt;
+
+---
+
+
+class: middle, center
+
+# Conceitos Básicos  
+
+## Análise Combinatória e Métodos de Numeração
+
+---
+
+
+
+#### Princípio Multiplicativo
+
+O princípio fundamental da contagem, também chamado de princípio multiplicativo, postula que:
+
+ &gt;“quando um evento é composto por `\(n\)` etapas sucessivas e **independentes**, de tal modo que as possibilidades da primeira etapa é `\(x\)` e as possibilidades da segunda etapa é `\(y\)`, o número total de possibilidades do evento ocorrer é dado pelo produto `\((x) \cdot (y)\)`”.
+
+Em resumo, no princípio fundamental da contagem, multiplica-se o número de opções entre as escolhas que lhe são apresentadas.
+
+---
+
+**Exemplo**
+
+1- Em um restaurante, há `\(5\)` aperitivos no menu, `\(10\)` pratos principais e `\(4\)` sobremesas. De quantas maneiras uma refeição pode ser solicitada se um aperitivo, um prato principal e uma sobremesa forem escolhidos?
+
+--
+
+**Resposta:**
+
+Dado X o número de refeições que podem ser solicitadas temos:
+
+`$$X = 5 \times 10 \times 4 = 200$$`
+
+
+---
+#### Princípio Aditivo
+
+&gt; quando um evento pode ocorrer por meio de `\(n\)` alternativas **mutuamente exclusivas**, de tal modo que a primeira pode ocorrer de `\(x\)` maneiras e a segunda de `\(y\)` maneiras, o número total de possibilidades do evento ocorrer é dado pela soma `\(x+y\)`.
+
+Em resumo, no princípio aditivo, somam-se as possibilidades quando as escolhas não podem ocorrer simultaneamente (ou uma, ou outra).
+
+---
+
+**Exemplo**
+
+2- Uma pessoa possui:
+
+`\(10\)` pares de sapatos,  
+`\(3\)` bermudas,  
+`\(5\)` calças,  
+`\(8\)` camisetas.  
+
+Para montar um look, ela escolhe:
+
+`\(1\)` par de sapatos,
+`\(1\)` camiseta,
+e ou `\(1\)` bermuda ou `\(1\)` calça (não é permitido usar ambos simultaneamente).
+
+Pergunta:
+De quantas maneiras distintas essa pessoa pode montar um look completo?
+
+---
+class: middle
+
+3- Considere a formação de códigos de identificação para funcionários de uma empresa.
+Cada código possui exatamente `\(5\)` caracteres.  
+
+Determine quantos códigos distintos podem ser formados em cada situação:
+
+  (a) Utilizando apenas dígitos numéricos (0–9), sem qualquer restrição.   
+  
+  (b) Utilizando apenas dígitos numéricos (0–9), sendo que o primeiro dígito não pode ser 0.   
+  
+  (c) Utilizando apenas dígitos numéricos (0–9), sem repetição de dígitos.   
+  
+  (d) Utilizando um conjunto ampliado de caracteres composto por:
+
+* `\(10\)` dígitos (0–9),
+* `\(52\)` letras (maiúsculas e minúsculas),
+* `\(33\)` símbolos especiais,
+
+sem qualquer restrição quanto à repetição.
+
+---
+
+a-
+
+`\(X = 10 \times 10 \times 10 \times 10 \times 10 = 10^5 = 100.000\)`
+
+--
+
+b- 
+
+
+`\(X = 9 \times 10 \times 10 \times 10 \times 10 = 9 \times 10^4 = 90.000\)`
+
+
+--
+
+c- 
+
+`\(X = 10 \times 9 \times 8 \times 7 \times 6 = 30.240\)`
+
+
+--
+
+d) 
+
+Sabendo que o o número de caracteres disponíveis é `\(10+52+33=95\)`, então:
+
+`\(X = 95 \times 95 \times 95 \times 95 \times 95 = 95^5 = 7.737.809.375\)`
+
+
+---
+
+4- Um dos métodos utilizados para roubo de senhas e invasão de contas é o método de Ataque de Força-bruta ([Brute-force attack](https://en.wikipedia.org/wiki/Brute-force_attack)). Nessa técnica são testadas combinações de números, letras e caracteres especiais até que a senha seja descoberta. Suponha que um programa seja capaz de testar, em média, `\(435\)` milhões de senhas por segundo:   
+
+  a. qual o tempo máximo em segundos ele levaria para decodificar uma senha composta na condição (d) do exercício anterior? 
+
+  b. qual o tempo máximo em dias ele levaria para decodificar uma senha composta na condição (d) do exercício anterior, mas com `\(9\)` dígitos?
+
+---
+
+a-
+
+`\(T = \frac{X}{435.000.000} =\frac{7.737.809.375}{435.000.000} = 17,79 \text{ s}\)`
+
+--
+
+b-
+
+
+No caso o número de senhas será dado por `\(X = 95^9 = 630,25 \times 10^{15}\)`
+
+
+Em segundos: `\(T = \frac{X}{435.000.000} =\frac{630,25 \times 10^{15}}{435.000.000} = 1.448.849.218 \text{ s}\)`
+
+
+Em dias: `\(T = \frac{1.448.849.218}{3600 \times 24} =  16769.09 \text{ dias}\)`
+
+
+Em anos: `\(T = \frac{16769.09}{365.5} =  45,95 \text{ anos}\)`
+
+---
+## Permutações
+
+Quando estamos preocupados em responder "de quantas maneiras um evento pode ocorrer", utilizamos o conceito de permutação para essa tarefa. 
+
+Digamos que temos `\(n\)` objetos diferentes, de quantas maneiras podemos **dispor** (**permutar**) esses objetos? 
+
+Dado o conjunto de letras `\(L=\{a, b, c\}\)`, de quantas maneiras podemos permutá-las?
+
+--
+
+`\({a,b,c}\)`     
+`\({a,c,b}\)`  
+`\({b,a,c}\)`     
+`\({b,c,a}\)`  
+`\({c,a,b}\)`     
+`\({c,b,a}\)`  
+
+--
+
+Equivale em colocar os elementos dentro de caixas com `\(n\)` compartimentos em alguma ordenação. 
+
+E como consequência do princípio da multiplicação, as possibilidades de inserção dentro dentro de uma caixa são multiplicadas pelas possibilidades da caixa seguinte, e assim sucessivamente, ou seja:
+
+---
+
+## Diagrama da Permutação
+
+&lt;img src="https://arpanosso.github.io/estatinfo/slides/img/caixa_permuta.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+`$$n! = n \cdot (n-1) \cdot (n-2) \cdots (2) \cdot (1)$$`
+`$$3! = 3 \cdot (3-1) \cdot(3-2) = 3 \cdot 2 \cdot 1 = 6$$`
+---
+
+**Exemplos**:
+
+5- Quantos números de `\(7\)` algarismos **distintos** podem ser formados com os algarismos `\(1,2,3,4,5,6,7\)`?
+
+6- Quantos números de `\(7\)` algarismos **distintos** podem ser formados com os algarismos `\(1,2,3,4,5,6,7\)` de modo que em todos os números formados, o algarismo `\(6\)` seja imediatamente seguido pelo algarismo `\(7\)`?
+
+7- Considere um grupo de `\(12\)` torcedores, todos distintos, distribuídos conforme o time para o qual torcem:
+
+`\(3\)` torcedores do Santos (S);  
+`\(4\)` torcedores do Palmeiras (P);  
+`\(5\)` torcedores do Corinthians (C).  
+
+Esses torcedores serão dispostos em uma fila, de modo que torcedores do mesmo time permaneçam consecutivos. Determine o número de disposições lineares possíveis, sabendo que o primeiro bloco da fila deve ser formado pelos torcedores do Santos.
+
+8-Considere um baralho padrão com `\(52\)` cartas distintas, qual o número de maneiras de embaralhar completamente esse baralho?
+
+
+---
+
+5-  
+`\(X = n! = 7! = 5400\)`
+
+6-  
+`\(X = n! = 6! = 720\)`
+
+7-  
+
+`\(X = \text{S x P x C + S x C x P} = 3!\times4!\times5!+3!\times5!\times4! = 34560\)`
+---
+8-  
+`\(X = 52! = 8,05 \times 10^{67}\)`
+
+Se você embaralhasse `\(1\)` vez por segundo desde o início do universo (~
+`\(10^{17}\)` segundos), teria feito cerca de `\(10^{17}\)` embaralhamentos — infinitamente menor que `\(10^{67}\)`.
+
+Mesmo que toda a população da Terra (~
+`\(8×10^9\)`) embaralhasse cartas sem parar, `\(1\)` vez por segundo, ainda assim:
+
+`$$8×10^9×10^{17}=8×10^{26}$$`
+
+→ ainda muito menor que `\(10^{67}\)`.
+
+É tão grande que:
+
+A chance de dois embaralhamentos aleatórios resultarem na mesma ordem é praticamente zero.
+---
+class: middle, center, inverse
+![](img/chatGPT-52-fact.png)
+
+---
+## Arranjos
+
+O arranjo é uma extensão do conceito de fatorial de modo que, se temos `\(n\)` e vamos tomar `\(x\)` elementos desses `\(n\)` (sempre com `\(0&lt;x&lt;n\)`), de quantas maneiras poderemos **dispor** os `\(x\)` elementos amostrados? É uma amostragem seguida de uma permutação com os `\(x\)` elementos escolhidos.
+
+Nesse caso, **a ordem** com a qual os elementos serão dispostos **IMPORTA** para a contagem.
+
+&lt;img src="https://arpanosso.github.io/estatinfo/slides/img/caixa_arranjo.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+
+`$$A^n_x= \frac{n!}{(n-x)!}$$`
+
+---
+
+9- A senha da sua conta bancária pode ser formada de `\(6\)` números ou de `\(4\)` números dentre os números de `\(0\)` a `\(9\)`, dependendo do banco. Os gerentes sempre aconselham utilizar todos os números distintos (sem repetição),
+
+Quantas senhas podem ser formadas em um banco `\(6\)` números, e em um banco que utiliza `\(4\)` números, seguindo o conselho dos gerentes?
+
+10- Quantos números de `\(3\)` algarismos podemos formar com os dígitos `\(1, 2, 3, 4, 5, 6\)` de modo que haja pelo menos dois dígitos iguais?
+
+---
+9 -
+
+`$$A^n_x= \frac{n!}{(n-x)!}= \frac{10!}{(10-6)!} = \frac{10.9.8.7.6.5.4!}{4!} = 151200$$`
+`$$A^n_x= \frac{n!}{(n-x)!}= \frac{10!}{(10-4)!} = \frac{10.9.8.7.6!}{6!} = 5040$$`
+10 - 
+`$$A^n_x= \frac{n!}{(n-x)!}= \frac{6!}{(6-3)!} = \frac{6.5.4.3!}{3!} = 120$$`
+---
+
+## Combinações 
+
+Semelhante aos arranjo, nas **Combinações** temos `\(n\)` elementos e vamos amostrar `\(x\)` elementos `\((0&lt;x&lt;n)\)`, e estamos interessados em contar de quantas maneiras poderemos **combinar** os `\(x\)` elementos amostrados, nesse caso **a ordem** com a qual os elementos são amostrados **NÃO IMPORTA** para a contagem.
+
+![](img/chat-comb.png)
+
+---
+
+&lt;img src="https://arpanosso.github.io/estatinfo/slides/img/caixa_combin.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+
+Assim, para calcularmos essa combinação, será necessário descontar dos Arranjos de `\(x\)` elementos as permutações desses mesmos `\(x\)` elementos, para isso, basta dividirmos os Arranjos por `\(x!\)`:
+
+---
+Portanto:
+
+`$$C^n_x=\frac{A^n_x}{x!}$$`
+
+`$$C^n_x=\frac{\frac{n!}{(n-x)!}}{x!}$$`
+`$$C^n_x=\frac{n!}{(n-x)!} \cdot \frac{1}{x!}$$`
+
+`$$C^n_x= \frac{n!}{x!(n-x)!}$$`
+Essa forma é tão corriqueira que adotamos a seguinte denotação para a Combinação:
+
+`$$C^n_x={n \choose x} = \frac{n!}{x!(n-x)!}$$`
+---
+
+![](img/per-arr-com-calculadora.png)
+
+---
+
+### Exemplo
+
+Voltando para o exemplo do rebanho composto por `\(100\)` animais, onde temos `\(20\)` indivíduos doentes e `\(80\)` sadios, vamos calcular a probabilidade de em uma amostra de `\(5\)` animais selecionarmos `\(2\)` animais doentes e `\(3\)` animais sadios:
+
+&lt;img src="https://images.pexels.com/photos/162801/cows-dairy-cows-milk-food-162801.jpeg?cs=srgb&amp;dl=pexels-pixabay-162801.jpg&amp;fm=jpg" style=" display: block; margin-left: auto; margin-right: auto;width: 40%"&gt;&lt;/img&gt;
+
+`$$P(E) = \frac{\text{nº de resultados favoráveis}}{\text{nº total de resultados possíveis}}$$`
+---
+
+#### `\(\text{nº de resultados favoráveis}\)`
+
+Ou seja, de quantas maneiras poderemos escolher `\(2\)` animais do total de `\(20\)` doentes e `\(3\)` animais dos `\(80\)` sadios
+
+`\(C^{20}_2 \cdot C^{80}_3 = {20 \choose 2} \times {80 \choose 3}\)`
+
+`\(C^{20}_2 \cdot C^{80}_3  = \frac{20!}{2!(20-2)!} \times \frac{80!}{3!(80-3)!}\)`
+
+`\(C^{20}_2 \cdot C^{80}_3  = 190 \times 82160\)`
+
+`\(C^{20}_2 \cdot C^{80}_3  = 15610400\)`
+---
+
+#### `\(\text{nº total de resultados possíveis}\)`
+
+Devemos calcular agora de quantas maneiras poderemos escolher `\(5\)` animais (independente de serem sadios ou doentes) em um total de `\(100\)` animais.
+
+`\(C^{100}_5 = {100 \choose 5}\)`
+
+`\(C^{100}_5 = \frac{100!}{5!(100-5)!}\)`
+
+`\(C^{100}_5  = 75287520\)`
+
+---
+
+Finalmente, a probabilidade do evento, amostrar `\(2\)` indivíduos doentes e `\(3\)` sadios será:
+
+`$$P(E) = \frac{\text{nº de resultados favoráveis}}{\text{nº total de resultados possíveis}} = \frac{15610400}{75287520}=0,20734 \text{ ou } 20,73\%$$`
+
+Agora que temos uma fórmula, podemos calcular a probabilidade de na amostragem de `\(5\)` animais tomarmos:
+
+a) nenhum animal doente (todos sadios).  
+b) `\(01\)` doente e `\(04\)` sadios.  
+c) `\(02\)` doentes e `\(03\)` sadios.  
+d) `\(03\)` doentes e `\(01\)` sadio.  
+e) todos doentes.
+
+---
+
+## Distribuição de Probabilidade 
+
+Essa fórmula que acabamos de encontrar decreve uma ditribuição discreta de probabilidade, conhecida na estatística como  **Distribuição Hipergeométrica**. 
+
+Considere uma população com `\(N\)` objetos nos quais `\(M\)` são classificados como do tipo `\(A\)` e `\(N−M\)` são classificados como do tipo `\(B\)`. Tomamos uma amostra ao acaso, sem reposição e não ordenada de `\(r\)` objetos. Seja `\(X\)` a variável que conta o número de objetos classificados como do tipo `\(A\)` na amostra. Então a distribuição de probabilidade de `\(X\)` será dada por:
+
+`$$P(X = x) = \frac{ {M \choose x} \cdot { {N-M} \choose {r - x} } } { {N \choose r}}$$`
+Assim, vamos construir essa distribuição probabilidades.
+
+
+
+---
+class: middle, center
+#### Distribuição Hipergeométrica
+
+
+.pull-left[
+&lt;img src="Aula03_files/figure-html/unnamed-chunk-5-1.png" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+
+```
+#&gt; # A tibble: 6 × 2
+#&gt;       x      px
+#&gt;   &lt;int&gt;   &lt;dbl&gt;
+#&gt; 1     0 0.319  
+#&gt; 2     1 0.420  
+#&gt; 3     2 0.207  
+#&gt; 4     3 0.0478 
+#&gt; 5     4 0.00515
+#&gt; # ℹ 1 more row
+```
+
+]
+
+**OBS**: O número de doentes da amostra de `\(5\)` animais pode variar de `\(0\)` a `\(5\)`, denominado espaço amostral (`\(\Omega\)` ou `\(S\)`), com a soma de suas probabilidades igual a `\(1\)`:
+
+`\(\sum \limits_{x=0}^r P(x_i) = 1\)`
+
+
+---
+class: middle, center
+
+# Conceitos Básicos  
+
+## Teoria dos Conjuntos 
+
+---
+## Definições
+
+**Conjuntos**: é uma coleção de qualquer tipo de objetos – pessoas, animais, plantas, fenômenos, estímulos, respostas, traços genéticos, métodos, ideias e possibilidades lógicas. Dizemos que um conjunto está bem definido quando está claro que um objeto pertence ou não pertence ao conjunto. A ambiguidade não é permitida. 
+
+- Conjunto dos números `\(2\)`, `\(3\)`, `\(5\)`, `\(7\)`.
+- Conjunto de estudantes presentes na sala de aula.
+- Conjunto de meses que se iniciam pela letra `\(J\)`.
+- Conjunto dos números pares.
+- Conjunto de árvores presentes na sala de aula.
+
+---
+
+**Elemento (ou membro)**: é o nome que se dá a cada objeto do conjunto. 
+
+
+**Conjunto finito**: contém um número finito de elementos. 
+- Conjunto dos números `\(2\)`, `\(3\)`, `\(5\)`, `\(7\)`.
+- Conjunto de estudantes presentes na sala de aula.
+- Conjunto de meses que se iniciam pela letra `\(J\)`.
+
+
+**Conjunto infinito**: contém um número infinito de elementos. 
+	Conjunto de números pares.
+
+
+**Conjunto vazio**: não contém elementos
+	Conjunto de árvores dentra da sala de aula.
+
+---
+
+### Notações e Símbolos
+
+**Conjuntos**: São representados por letras maiúsculas tais como `\(A, B, C,...\)`
+
+
+**Elementos**: São representados por letras minúsculas tais como `\(a, b, c,...\)` 
+
+
+**Conjunto vazio**: é representado pelo zero cortado por uma barra.  É aquele desprovido de elementos.
+
+`$$\phi$$` 
+ou
+`$$\{\}$$`
+
+
+---
+
+### Formas de apresentação 
+
+**Forma Tabular**: Os elementos de um conjunto são reunidos por chaves. 
+Conjunto dos números 2,3,5,7:
+
+`\(A=\{2,3,5,7\}\)`
+
+**Forma de construção**: Para conjuntos grandes devemos caracterizar seus elementos por meio de afirmações matemáticas, pois, por exemplo, somos incapazes de relacionar todos os números maiores que `\(5\)`, uma vez que este conjunto é infinito, assim, introduzimos um elemento variável, `\(x\)`, e definimos como  `\(Z = \{ x | x &gt; 5\}\)`, lê-se "o conjunto de todo os números `\(x\)` tal que, `\(x\)` seja maior que `\(5\)`".
+
+
+Para o exemplo anterior, temos:
+
+`\(A=\{x|x \text{ é nº primo menor que 10} \}\)` 
+
+
+&gt; **OBS:** Um número primo é um número natural maior que `\(1\)` que só pode ser dividido por `\(1\)` e por ele mesmo, sem deixar resto. 
+---
+
+**Conjunto solução**: A teoria dos conjuntos pode ser utilizada para apresentar as soluções de problemas matemáticos. Por exemplo:
+
+`\(A = \{ x | x^2 = 4\}\)`  então, `\(A = \{ -2, 2 \}\)`
+
+
+`\(B = \{t | 3t – 4 = 5\}\)`  então, `\(B = \{3\}\)`
+
+
+`\(C=\{x | x^2 &lt; 4\}\)`  então  `\(C=\{x | -2 &lt; x &lt; 2\}\)`
+
+---
+
+## Pertinência
+
+Para indicar que um objeto é elemento de um conjunto, usamos o símbolo de pertinência `\(\in\)`, lido como "pertence a" ou "está em". 
+
+`$$a \in T$$`
+
+significa que **"a é elemento do conjunto T"** ou **"a pertence a T"**. 
+
+O oposto pode ser expresso por `\(\notin\)`, significando **"não é elemento"** ou **"não pertence a"**. 
+
+$$ 5 \in \aleph$$
+
+`$$\frac{1}{2} \in \Re$$`
+
+`$$\frac{1}{2} \notin \aleph$$`
+
+---
+
+## Continência
+
+**Subconjunto**: Para um conjunto `\(A\)` contendo somente elementos de um conjunto `\(B\)`, mas não necessariamente todos os membros de `\(B\)`, então `\(A\)` é **subconjunto** de `\(B\)`.
+
+$$ A \subset B$$
+ou `\(B\)` é **superconjunto** de `\(A\)`.
+
+`$$B \supset A$$`
+
+E dizemos que **"A está contido em B"** ou **"B contém A"**.
+
+Essa definição de subconjunto nos permite dizer que um conjunto é subconjunto de si mesmo:
+
+`$$B \subset B$$`
+O conjunto vazio é considerado subconjunto de qualquer conjunto, isto é 
+
+`$$\phi \subset A$$`
+
+---
+
+**Igualdade entre conjuntos**: Dois conjuntos são ditos iguais, em símbolos:
+
+`$$A = B$$`
+
+se, e somente se:
+
+$$A \subset B \text{ e } A \supset B $$
+
+Os conjuntos contiverem exatamente os mesmos elementos.
+
+Se `\(x\)` for um elemento, então `\(x \in A\)` implica que `\(x \in B\)` e vice-versa.
+
+de forma análoga, se `\(x \notin A\)` implica que `\(x \notin B\)` 
+
+**Exemplo**
+
+`$$\{1, 2, 3\} = \{3, 1, 2\} = \{1, 2, 2, 3\}$$`
+**OBS:** O número de elementos do conjunto não é considerado para a operação de igualdade entre eles.
+
+---
+
+**Conjunto Universo ou universal**: Formado por todos os elementos que têm uma característica desejada:
+
+Notação: `\(U\)` ou `\(\mho\)`:
+
+`$$U \supset A \supset \phi, \forall  A$$`
+&gt; Lê-se: O universo contém o conjunto A, que por sua vez contém o conjunto vazio, qualquer que seja o conjunto A.
+
+**Conjunto potência** ou **conjunto das partes**: Seja `\(A\)` um conjunto finito, define-se o conjunto das partes de `\(A\)` ou conjunto potência como sendo o conjunto cujos elementos são todos os possíveis subconjuntos formados com os elementos de `\(A\)`:
+
+Notação `\(P(A) = 2^n = a\)` on de `\(n\)` é o número de elementos do conjunto `\(A\)`:
+
+**Exercício**: 
+
+Se `\(B = \{1, 2, 3\}\)` qual o conjunto potência de `\(B\)`?
+
+---
+
+Subconjunto desprovido de elementos = `\(\phi\)`  
+Subconjunto com `\(1\)` elementos ={1}; {2}; {3}  
+Subconjunto com `\(2\)` elementos= {1, 2}; {1, 3}; {2, 3}  
+Subconjunto com `\(3\)` elementos é o próprio conjunto B =  {1, 2, 3}  
+
+`$$P(B) = \{\phi,\{1\}, \{2\}, \{3\}, \\ \{1, 2\},  \{1, 3\}, \{2, 3\}, \{1, 2, 3\}\}$$`
+
+
+Observe que  `\("3"\)`  é diferente de  `\("\{3\}"\)` , pois `\(3\)` é um elemento e `\(\{3\}\)` é um conjunto. 
+
+Podemos dizer que:
+
+ `\(\{3\} \subset \{ 1, 2, 3\}\)`, porém `\(3 \in \{1, 2, 3\}\)`
+ 
+ Assim como podem dizer que `\(\{3\}  \in P(B)\)`
+ 
+  
+---
+
+**Conjuntos Disjuntos**: São aqueles que não têm elementos comum, ou seja, `\(A \neq B\)`.
+
+
+`\(A={1,2,3}\)` e `\(B={4,5,6}\)`, assim *A e B são disjuntos*.  
+
+`\(A={1,3}\)` e `\(B={x}\)`, assim *A e B são disjuntos*.  
+
+`\(A={2,3}\)` e `\(B={4,3}\)`, assim *A e B não são disjuntos*.  
+
+
+---
+
+## Diagrama de Venn-Euler
+
+Conjuntos de qualquer tipo de elementos são representados por conjunto de pontos. Para simplificação das relações, são utilizados pontos em um **círculo** ou em um **retângulo**. 
+
+Tal representação é chama de **Diagrama de Venn-Euler** que são representações geométricas de conjuntos e seus elementos bem como das relações destes conjuntos.
+
+&lt;img src="https://arpanosso.github.io/estatinfo/slides/img/venn_01.png" width="45%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Operações com conjuntos
+
+### União ou Reunião (OU)
+
+Com dois conjuntos `\(A\)` e `\(B\)`, podemos sempre formar um novo conjunto simplesmente pelo agrupamento de seus elementos. Chamamos a esse novo conjunto de união, e escrevemos simbolicamente:
+
+`$$A \cup B$$`
+
+Lemos **"A União B"** ou **"A Reunião B"**, ou seja, esse novo conjunto contém exatamente os elementos que estão em `\(A\)`, ou os elementos que estão em `\(B\)`, ou os elementos que estão **ambos**. 
+
+A operação de União assemelha-se à adição. Entretanto, devemos observar que:
+
+i) `\(A \cup A = A\)`
+
+ii) `\(B \subset A\)`, então: `\(A \cup B = A\)`
+
+---
+
+class: middle, center
+
+Diagrama de Venn da união de dois conjuntos disjuntos:
+
+&lt;img src="https://arpanosso.github.io/estatinfo/slides/img/venn_02.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+`$$A \cup B = \{x| x \in A \text{ ou  } x \in B  \text{ ou }  (x \in A \text{ e  } x \in B)  \}$$`
+---
+
+class: middle, center
+
+Diagrama de Venn da união de dois conjuntos não disjuntos:
+
+&lt;img src="https://arpanosso.github.io/estatinfo/slides/img/venn_03.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+`$$A \cup B = \{x| x \in A \text{ ou  } x \in B  \text{ ou }  (x \in A \text{ e  } x \in B)  \}$$`
+
+---
+
+class: middle, center
+
+`$$A \cup A = A \text{ e se } B \subset A,\text{ então: } A \cup B = A$$`
+
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/venn_04.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+
+### Propriedades da União
+
+i) Comutativa:
+
+`\(A \cup B = B \cup A\)`
+
+
+
+ii) Associativa:
+
+`\(A \cup (B \cup C) = (A \cup B) \cup C = (A \cup B \cup C)\)`
+
+
+iii) União com o vazio:
+
+`\(A \cup \phi = \phi \cup A = A, \forall A\)`
+
+
+iv) União com o Universo:
+
+`\(A \cup U = U \cup A = U, \forall A\)`
+
+---
+
+### Interseção (E)
+
+Em analogia, imaginemos duas retas que se interceptam, as duas retas podem ser consideradas como conjuntos infinitos de pontos. Os dois conjuntos têm um ponto em comum o ponto de interseção. 
+
+&lt;img src="Aula03_files/figure-html/unnamed-chunk-11-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+
+Generalizando, sejam `\(A\)` e `\(B\)` dois conjunto quaisquer, podemos estar interessados em saber  se os dois conjuntos estão sobrepostos, isto é, se os dois conjuntos possuem elementos em comum, seja ele vazio ou não, a interseção de `\(A\)` e `\(B\)` escrevemos: 
+
+$$A \cap B $$
+
+Lemos **"A interseção B"**, ou **"A inter B"**.
+
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/venn_05.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+`$$A  \cap B = \{x|x \in A \text{ e  } x \in B \}$$`
+
+---
+
+class: middle, center
+
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/venn_06.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+
+Neste caso, quando dois conjuntos não possuem elementos em comum, então `\(D\)` é um conjunto vazio, os dois conjuntos são então chamados de **disjuntos**.
+
+---
+
+### Propriedades da Interseção
+
+i) Comutativa:
+
+`\(A \cap B = B \cap A\)`
+
+ii) Associativa:
+
+`\(A \cap (B \cap C) = (A \cap B) \cap C = (A \cap B \cap C)\)`
+
+iii) Interseção com o vazio:
+
+`\(A \cap \phi = \phi \cap A = \phi, \forall A\)`
+
+iv) iii) Interseção com o universo:
+
+`\(A \cap U = U \cap A = A, \forall A\)`
+
+---
+
+**Operações com conjuntos**
+
+1) Primeira Lei Distributiva:
+
+`\(A \cap (B \cup C) = (A \cap B) \cup (A \cap C)\)`
+
+2) Segunda Lei Distributiva 
+
+`\(A \cup (B \cap C) = (A \cup B) \cap (A \cup C)\)`
+
+---
+
+class: middle, center
+
+1) Primeira Lei Distributiva  
+
+
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/venn_07.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+Dados `\(3\)` conjuntos, `\(A\)`, `\(B\)` e `\(C\)`, podemos demonstrar que:
+`\(A \cap (B \cup C) = (A \cap B) \cup (A \cap C)\)`
+
+---
+
+class: middle, center
+
+2) Segunda Lei Distributiva  
+
+
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/venn_08.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+
+Dados `\(3\)` conjuntos, `\(A\)`, `\(B\)` e `\(C\)`, podemos demonstrar que:
+`\(A \cup (B \cap C) = (A \cup B) \cap (A \cup C)\)`
+
+---
+
+## Conjunto Complementar
+
+**Conjunto Complementar**: Seja `\(A\)` um subconjunto de `\(U\)`, isto é `\(A \subset U\)`. Então estamos interessados nos elementos de `\(U\)` que não pertencem a `\(A\)`. Eles formam um novo conjunto, que é chamado **"o complementar de A em U"**. Representado por: `\(\bar{A}\)` ou `\(A^{c}\)`.
+
+
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/venn_09.png" width="55%" style="display: block; margin: auto;" /&gt;
+`$$\bar{A} = \{ x | x \in U, x \notin A \}$$`
+---
+
+Definido a operação de interseção, observe que se `\(A\)` for um subconjunto de um conjunto universo `\(U\)` e `\(\bar{A}\)` o  complemento de `\(A\)`, então: 
+
+i) `\(A \cap \bar{A} = \phi, \forall A\)`
+
+ii) `\(A \cup \bar{A} = U, \forall A\)`
+
+---
+
+Utilizando o diagrama de Venn pode-se provar as propriedades:
+
+`\(a) \bar{(A \cap B)} = \bar{A} \cup \bar{B}\)`
+
+`\(b) \bar{(A \cup B)} = \bar{A} \cap \bar{B}\)`
+
+---
+
+`\(\bar{(A \cap B)} = \bar{A} \cup \bar{B}\)`
+
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/venn_10.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+
+`\(\bar{(A \cup B)} = \bar{A} \cap \bar{B}\)`
+
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/venn_12.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+
+### Exercícios
+
+1) Em uma  sala de aula  há `\(30\)` meninas, `\(21\)` crianças ruivas, `\(13\)` meninos não ruivos e `\(4\)` meninas ruivas. Pergunta-se:  
+
+a) Quantos são os meninos ruivos?  
+b) Quantas são as meninas não ruivas?  
+c) Quantas crianças há na escola?  
+d) Quantas crianças são ruivas ou meninas?  
+e) Quantas crianças não são ruivas ou meninas?  
+f) Quantas crianças não são, ruivas ou meninas?  
+
+---
+
+2) Em uma comunidade de animais são consumidas `\(3\)` espécies de plantas `\(A\)`, `\(B\)` e `\(C\)`. Uma pesquisa apresentou os seguintes resultados:
+
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/ex2_aula6.png" width="95%" style="display: block; margin: auto;" /&gt;
+
+a) Quantos animais foram amostrados?  
+b) Quantos animais consomem somente `\(2\)` espécies de plantas?  
+c) Quantos animais não consomem a planta `\(B\)`?  
+d) Quantos animais não consomem `\(A\)` ou não consomem `\(B\)`?  
+
+---
+### Respostas
+
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/aula6_respostas.png" width="85%" style="display: block; margin: auto;" /&gt;
+
+class: middle, center, inverse
+
+# Definições Iniciais
+
+---
+
+### Ensaio ou Experimento
+
+Fazer ou observar alguma coisa sob certas condições, resultando em algum estado final de acontecimentos ou resultados.
+
+Na prática, os experimentos não são precisamente repetíveis, mesmo sob condições supostamente idênticas.
+
+
+&lt;img src="img/exp_aleatorios.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+### Experimento aleatório
+
+Pode ser repetido inúmeras vezes e nas mesmas condições e, mesmo assim, apresenta resultados diferentes.
+
+
+---
+
+### Fenômeno aleatório:
+
+É a situação ou acontecimento cujos resultados não podem ser previstos com certeza, pois envolve a eventualidade, portanto é proveniente de um **experimento aleatório**. 
+
+Apesar do experimento ter sido realizado em condições supostamente controladas, existem fatores afetando os resultados, mas não se conhece ou não se sabe como controlá-los.
+
+.pull-left[
+Tempo em um restaurante
+&lt;img src="https://images.pexels.com/photos/28999499/pexels-photo-28999499.jpeg" width="60%" style="display: block; margin: auto auto auto 0;" /&gt;
+
+Produção de cana-de-açúcar (TCH)
+&lt;img src="https://images.pexels.com/photos/7457175/pexels-photo-7457175.jpeg?cs=srgb&amp;dl=pexels-kindel-media-7457175.jpg&amp;fm=jpg" width="60%" style="display: block; margin: auto auto auto 0;" /&gt;
+]
+
+.pull-right[
+Ganho de peso bovino
+&lt;img src="https://images.pexels.com/photos/3214973/pexels-photo-3214973.jpeg?cs=srgb&amp;dl=pexels-alex-azabache-3214973.jpg&amp;fm=jpg" width="55%" style="display: block; margin: auto auto auto 0;" /&gt;
+]
+
+---
+
+### Espaço amostral `\((S)\)`
+
+É o conjunto de todos os resultados possíveis de um certo fenômeno aleatório, é o conjunto de todos os elementos que possuem a característica em estudo representada pela letra Ômega `\(\Omega\)` ou pelo `\(S\)`.   
+
+ - No lançamento de um dado, o espaço amostral é:
+
+`$$S = \{1, 2, 3, 4, 5, 6\}$$`
+
+ - No lançamento de uma moeda, o espaço amostral é:
+
+`$$S = \{H, T\}$$`
+Onde `\(H\)` representa Cara e `\(T\)` representa Coroa.
+
+- Produção de cana-de-açúcar (TCH)
+
+`$$S = \{x \in \mathbb{R} | x &gt; 0\}$$`
+
+- No tempo em um restaurante
+
+`$$S = \{t \in \mathbb{R} | t &gt; 0\}$$`
+
+---
+
+No lançamento de duas moedas o espaço amostral é:
+
+`$$S = \{HH, HT,TH,TT\}$$`
+
+### Evento simples, ponto amostral ou evento elementar `\((e)\)`
+
+É cada resultado possível, ou seja, é o conjunto de resultados possíveis. Assim, para o lançamento de duas modeas,  temos: 
+
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/duas_modeas.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+### Evento (E)
+
+Qualquer subconjunto do espaço amostral. 
+
+Assim, para o lançamento de um dado,  temos os eventos:
+
+a) sair um número par: 
+
+R: `\(E_1 = \{2, 4, 6\}\)`
+
+
+b) sair um número menor que `\(3\)`:  
+
+R: `\(E_2 = \{x| x&lt; 3 \} = \{1, 2\}\)` 
+
+
+
+c) sair um número menor que `\(3\)` ou primo:  
+
+R: `\(E = \{x| x&lt; 3 \text{ ou } x = \text{ primo }\} = \{ 1,2,3,5\}\)`
+
+
+---
+
+### Probabilidade de um evento - P(E)
+
+A probabilidade é uma função `\(P(.)\)` que atribuí valores numéricos a um determinado evento `\((E)\)`. 
+
+É uma medida numérica de **"quão provável"** é a ocorrência do evento na excussão do experimento, é a proporção de vezes que o evento é esperado ocorrer, quando o experimento é repetido sob idênticas condições.
+
+A determinação das probabilidade de um evento depende da natureza do experimento e do espaço amostral associado.
+
+---
+
+Supondo o lançamento de duas moedas "não viciadas" (honestas). Temos o espaço amostral:
+`\(S = \{H H, H T, T H, T T\}\)`.
+
+A título de exemplificação, vamos definir uma **variável aleatória `\(X\)`** que representa **a contagem do número de caras (H)** no lançamento de duas moedas, ou no lançamento de uma moeda duas vezes, temos:
+
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/exp_prob.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+Ao conjunto `\(\{x| P(X=x)\}\)` denominamos função de probabilidade da variável aleatória X.
+
+---
+class: middle, center, inverse
+
+# Resultados Elementares Igualmente Prováveis 
+
+---
+
+### Resultados elementares igualmente prováveis 
+
+Conclusões baseadas em dados empíricos, oriundos de uma observação experimental, são encerradas com incerteza que é expressa em termos de probabilidade. Assim, a atribuição é baseada nas características teóricas da realização do fenômeno.
+
+**Definição de Laplace de Probabilidade**
+$$
+P(H) = \frac{\text{nº de resultados favoráveis}}{\text{nº total de resultados possíveis}} = \frac{1}{2}
+$$
+.pull-left[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="https://upload.wikimedia.org/wikipedia/commons/a/ac/Pierre-Simon_de_Laplace_by_Johann_Ernst_Heinsius_%281775%29.jpg" alt="Pierre-Simon Laplace by Johann Ernst Heinsius (1775). Fonte: Wikipedia" width="50%" /&gt;
+&lt;p class="caption"&gt;Pierre-Simon Laplace by Johann Ernst Heinsius (1775). Fonte: Wikipedia&lt;/p&gt;
+&lt;/div&gt;
+  
+]
+
+.pull-right[
+  &gt;"Quociente do número de casos favoráveis sobre o número de casos igualmente possíveis". 
+  
+  Ao jogarmos uma moeda honesta (**"não viciada"**), não podemos afirmar que cairá Cara  `\((H)\)` ou Coroa `\((T)\)`.
+Por assim definimos a Probabilidade de `\(H\)` como:
+]
+
+
+---
+
+### Exemplos 
+
+**1)** No lançamento de um dado com os lados `\(\{1,2,3,4,5,6\}\)`, qual a probabilidade de cair Cara, `\(P(H)\)`?
+
+
+
+`$$P(H) = \frac{\text{nº de resultados favoráveis}}{\text{nº total de resultados possíveis}} = \frac{0}{6} = 0$$`
+
+Chamamos esse tipo de **Evento Impossível**.
+
+**2)** No lançamento de um dado com os lados `\(\{1,2,3,4,5,6\}\)`, qual a probabilidade de cair um número entre `\(1\)` e `\(6\)`?
+
+
+
+`$$P(H) = \frac{\text{nº de resultados favoráveis}}{\text{nº total de resultados possíveis}} = \frac{6}{6}=1$$`
+
+Chamamos esse tipo de **Evento Certo**.
+
+---
+
+###  Probabilidade de um Evento
+
+&gt;Assim, `\(P(E)\)` é a probabilidade de um evento `\(E\)`, ou seja, é um número entre `\(0\)` e `\(1\)`, quanto mais próximo a `\(1\)`, maior a chance de sua ocorrência.  A proporção de vezes que um evento simples pode ocorrer pode ser determinada sem executar o experimento. 
+
+Portanto, se `\(S\)` consiste de `\(k\)` eventos simples `\(\{ e_1, e_2, \cdots, e_k\}\)` que são **igualmente prováveis**, a probabilidade de cada `\(e_i\)` é `\(\frac{1}{k}\)` se `\(E\)` consiste de `\(m\)` desses `\(k\)` elementos, então temos:
+
+`$$P(E) = \frac{\text{nº de elementos em E}}{\text{nº de elementos em }S} = \frac{m}{k},$$`
+---
+
+Portanto `\(P(.)\)` é denominada probabilidade se, e somente se: 
+
+`\(i) \;0 \le P(E) \le 1, \forall\; E \subset S\)`.
+
+`\(ii) \;P(S)= 1\)`, assim como, `\(P(\phi)=0\)`
+
+`\(iii) P(E_1 \cup E_2 \cup \cdots \cup E_k) = P(\cup_{i=1}^kE_i)= \sum_{i=1}^k P(E_i)\)` com os eventos `\(E_i\)` **disjuntos (mutuamente excludentes)**.
+
+---
+
+### Exemplos
+
+1) Descreva o espaço amostral e a probabilidade de sair pelo menos uma face cara no lançamento de uma moeda três vezes.
+
+---
+
+### Teorema 1
+
+Se `\(\phi\)` for espaço amostral vazio:
+
+`$$P(\phi)=0$$`
+
+**Demonstração**:
+
+Para qualquer evento `\(A\)`, podemos escrever:
+
+`\(A = A \cup \phi\)`, com `\(A\)` e `\(\phi\)` disjuntos, apresentado na propriedade (iii), temos:
+
+`\(P(A)=P(A)+P(\phi)\)`, como conclusão imediata, temos:
+
+`\(P(\phi)=0\)`, mas se `\(P(A)=0\)`, não é verdadeiro que `\(A=\phi\)`, existem situações que atribuiremos `\(P(E)=0\)` para um evento que pode ocorrer.
+
+---
+
+### Teorema 2
+
+Se `\(\bar{A}\)` for o evento complementar de `\(A\)`, então: 
+
+`$$P(\bar{A}) = 1 - P(A)$$`
+
+**Demonstração**:
+
+Podemos escrever:
+
+`\(S = A \cup \bar{A}, \forall A\)`,
+
+Empregando a propriedade `\(2\)` e `\(3\)`, temos:
+
+`\(P(S) = P(A)+P(\bar{A})\)`  
+
+`\(1 = P(A)+P(\bar{A})\)`  
+
+`\(P(A) = 1-P(\bar{A})\)`, assim,  `\(P(\bar{A}) = 1-P(A)\)`
+
+Essa propriedade é importante, pois, muitas vezes é mais simples calcularmos a `\(P(\bar{A})\)` do que `\(P(A)\)`.
+
+---
+
+### Propriedade da multiplicação (E)
+
+Dados dois eventos `\(A\)` e `\(B\)` de interesse, qual a probabilidade de ocorrência de ambos? Se esses eventos são **independentes**, a probabilidade de ocorrência de ambos é dada por:
+
+`$$P(A \cap B) = P(A) \cdot P(B)$$`
+**Exemplo**: Jogamos duas moedas, honestas, qual a probabilidade de ambas as faces serem cara `\((H)\)`.
+
+`\(P(H \cap H) = P(H) \cdot P(H)\)`
+
+`\(P(H \cap H) = \frac{1}{2} \cdot \frac{1}{2}\)`
+
+`\(P(H \cap H) = \frac{1}{4}\)`
+
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/prob_01.png" width="20%" style="display: block; margin: auto;" /&gt;
+
+
+
+---
+
+class: middle, center, inverse
+
+# Probabilidade: Frequência Relativa 
+
+---
+
+### Probabilidade e Frequência Relativa 
+
+Outra maneira de atribuição de probabilidade é por meio da repetição do experimento várias vezes para obtermos informações à respeito da frequência de ocorrência dos diferentes resultados. 
+
+Se um experimento é repetido `\(n\)` vezes a frequência relativa `\((f_i)\)` de um evento `\(E\)` em `\(n\)` ensaios é:
+
+
+`$$f_n(E)=\frac{\text{nº vezes que E ocorre em n ensaios} }{n}$$`
+---
+
+Se as condições dos experimentos não mudam, quando o número `\(n\)` de vezes que o ensaio é realizado tende ao infinito a frequência relativa tende a se estabilizar em um valor numérico único, a **probabilidade do Evento E**.
+
+
+`$$\lim_{ n \to \infty } f_n(E) = P(E)$$`
+
+Se jogarmos um dado não viciado, muitas vezes e contarmos as vezes que cada lado sai, o valor da frequência relativa de cada tenderá a `\(\frac{1}{6} = 0,1667\)`.
+
+&lt;img src="https://images.pexels.com/photos/979722/pexels-photo-979722.jpeg?cs=srgb&amp;dl=pexels-jonathan-petersson-979722.jpg&amp;fm=jpg" width="50%" style="display: block; margin: auto;" /&gt;
+
+---
+
+Vamos definir `\(n\)` como o número de vezes que o experimento será realizado `\((100)\)`. Depois disso, vamos simular o lançamento de `\(n\)` dados e calcular a frequência de cada elemento.
+
+
+
+
+
+``` r
+# Carregando pacotes
+library(tidyverse)
+n &lt;- 100
+x &lt;- n  %&gt;%  
+  runif(min=.5,max=6.5) %&gt;%  
+  round()
+# Criando a tabela e posterior gráfico
+tibble(x)  %&gt;%  
+  group_by(x)  %&gt;%  
+  summarise(
+    ni = n(),
+    fi = ni/n
+  ) %&gt;% 
+  ggplot(aes(x=x,y=fi)) +
+  geom_col(color="black",fill="lightblue") +
+  geom_hline(yintercept = 1/6,color="red")
+```
+
+---
+
+&lt;img src="Aula03_files/figure-html/tab_1-1.png" style="display: block; margin: auto;" /&gt;
+
+
+Observe que os valores de `\(f_i\)` são diferentes, não houve a convergência para os valores de probabilidade `\(P(E) = 0,16667\)`, linha vermelha no gráfico.
+
+---
+
+Agora vamos aumentar o `\(n\)` para  `\(1.000.000\)`, e observar a convergência para o valor de `\(1/6\)`, linha vermelha no gráfico.
+
+
+``` r
+n &lt;- 1e6 # 1000000 - 1 milhão
+x &lt;- n  %&gt;%  
+  runif(min=.5,max=6.5) %&gt;%  
+  round()
+# Criando a tabela e posterior gráfico
+tibble(x) %&gt;% 
+  group_by(x) %&gt;%  
+  summarise(
+    ni = n(),
+    fi = ni/n
+  ) %&gt;%  
+  ggplot(aes(x=x,y=fi)) +
+  geom_col(color="black",fill="lightblue") +
+  geom_hline(yintercept = 1/6,color="red")
+```
+
+
+---
+&lt;img src="Aula03_files/figure-html/tab_2-1.png" style="display: block; margin: auto;" /&gt;
+
+Quando `\(n \to \infty\)` os valores de `\(f_i \to P(E) = 0,16667\)`.
+
+---
+
+**Exemplo**
+
+Dada a seguinte tabela, referente ao sexo `\((F, M)\)` e a cor do cabelo (*Ruivos* e *Não Ruivos*) de crianças em uma escola:
+
+
+ | Ruivo `\((R)\)` | Não Ruivo `\((\bar{R})\)` | TOTAL
+---|:---:|:---:|:---:|---:
+**Feminino `\((F)\)`** | 4  | 26 | **30**
+**Masculino `\((\bar{F})\)`** | 17 | 13 | **30** 
+**TOTAL** | **21** | **39** | **60**
+
+Ao selecionarmos um aluno ao acaso, pergunta-se:
+
+a) Qual a probabilidade do estudante ser *Ruivo*:
+
+b) Qual a probabilidade do estudante ser do sexo *Feminino*?
+
+c) Qual a probabilidade do estudante ser do sexo *Feminino* **e** *Ruivo*?
+
+d) Qual a probabilidade do estudante ser do sexo *Feminino* **ou** *Ruivo*?
+
+---
+a) 
+
+**R**: `\(P(Ruivo ) = \frac{21}{60} = 0,35\)`
+
+
+b) 
+
+**R**: `\(P(Feminino) = \frac{30}{60} = 0,50\)`
+
+
+c) 
+
+**R**: `\(P(Feminino \cap Ruivo) = \frac{4}{60} = 0,06667\)`
+---
+
+#### d) Qual a probabilidade do estudante ser do sexo *Feminino* **ou** *Ruivo*?
+
+
+**R**: Observe que existe uma região de intersecção entre esses conjuntos, então para calcularmos `\(P(F \cup R)\)` devemos somar `\(P(F)\)` com `\(P(R)\)` e subtraírmos uma vez `\(P(F \cap R)\)`.
+
+
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/venn_13.png" width="50%" style="display: block; margin: auto;" /&gt;
+
+
+`$$P(F \cup R) = P(F)  +P(R) - P(F \cap R)$$`
+`$$P(F \cup R) = \frac{21}{60} + \frac{30}{60} -\frac{4}{60}$$`
+
+`$$P(F \cup R)= \frac{47}{60} = 0,7833$$`
+---
+
+### Regra de Adição da Probabilidade
+
+No exemplo anterior é simples verificar que somamos duas vezes a interseção dos conjuntos na parcela `\(P(F) + F(R)\)`, ou seja, os indivíduos que são do sexo feminino e ruivos `\(P(F \cap R)\)`, por isso precisamos descontar `\(1\)` vez essa probabilidade da soma.
+
+Então temos a regra da adição da probabilidade:
+
+`$$P(A \cup B) = P(A) + P(B) - P(A \cap B)$$`
+---
+
+#### Teorema 3
+
+Se `\(A\)` e `\(B\)` forem dois eventos quaisquer, então, `\(P(A \cup B) = P(A) + P(B) - P(A \cap B)\)`:
+
+**Demonstração**: A ideia principal dessa demonstração é decompor `\(A \cup B\)` e `\(B\)` em dois eventos disjuntos, e em seguida aplicar a propriedade 3 da definição de probabilidade.
+
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/venn_14.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+
+#### Demonstração
+
+`\(A \cup B = A \cup (B \cap \bar{A})\)`
+
+Aplicando a função de probabilidade:
+
+`\(P(A \cup B) = P(A) + P(B \cap \bar{A})\)`,
+
+Assim, temos que:
+
+`\(P(B \cap \bar{A}) =P(A \cup B) - P(A)\)`  **(i)**
+
+Agora podemos definir `\(B\)` como a reunião de dois conjuntos disjuntos.
+
+`\(B = (A \cap B) \cup (B \cap \bar{A})\)`
+
+Aplicando a função de probabilidade:
+
+`\(P(B) = P(A \cap B) + P(B \cap \bar{A})\)`,
+
+
+---
+
+Assim, temos:
+
+`\(P(B \cap \bar{A}) = P(B) -  P(A \cap B)\)` **(ii)**
+
+A partir de **(i)** e **(ii)** temos:
+
+`\(P(A \cup B) - P(A) =  P(B) -  P(A \cap B)\)`
+
+Finalmente, temos:
+
+`\(P(A \cup B) =  P(A)  + P(B) -  P(A \cap B)\)`
+
+---
+
+#### Teorema 4
+
+Demonstrar que:
+
+$$
+`\begin{align}
+P(A \cup B \cup C) = P(A)+P(B)+P(C) - P(A \cap B) - \\ 
+  P(A \cap C) - P(B \cap C) + P(A \cap B \cap C)
+\end{align}`
+$$
+---
+
+#### Resposta
+
+Inicialmente vamos definir: `\(D = B \cup C\)` (i)
+
+Então,
+
+`\(P(A \cup D)\)`
+
+Pela lei da adição de probabilidade:
+
+`\(P(A \cup D) = P(A) + P(D) - P(A \cap D)\)` (ii)
+
+Subistituindo (i) em (ii), temos:
+
+`\(P(A \cup D) = P(A) + P(B \cup C) - P(A \cap (B \cup C))\)`
+
+Ao termo `\(P(B \cup C)\)` podemos aplicar a lei de adição e temos:
+
+`\(P(A \cup D) = P(A) + P(B) + P(C) - P(B \cap C) - P(A \cap (B \cup C))\)`
+
+Agora devemos aplicar a Primeira lei Distributiva ao termo `\(A \cap (B \cup C)\)` e temos:
+
+`\(P(A \cup D) = P(A) + P(B) + P(C) - P(B \cap C) - P((A \cap B) \cup (A \cap C))\)`
+
+
+---
+
+Observe que ao termo `\(P((A \cap B) \cup (A \cap C))\)` podemos aplicar a lei de acidção de probabilidades:
+
+$$
+`\begin{align}
+P(A \cup D) = P(A) + P(B) + P(C) - P(B \cap C) -[ P(A \cap B) + P(A \cap C)  \\ - P((A \cap B) \cap (A \cap C) )]
+\end{align}`
+$$
+
+
+
+$$
+`\begin{align}
+P(A \cup D) = P(A) + P(B) + P(C) - P(B \cap C) -[ P(A \cap B) + P(A \cap C)  \\ - P((A \cap B) \cap (A \cap C) )]
+\end{align}`
+$$
+
+Temos então que:
+
+$$
+`\begin{align}
+P(A \cup D) = P(A) + P(B) + P(C) - P(B \cap C) -P(A \cap B) - P(A \cap C) \\  - P(A \cap B \cap C )
+\end{align}`
+$$
+
+como queríamos demonstrar.
+
+---
+
+### Exercícios 
+
+1) Considere um experimento e os eventos `\(A\)` e `\(B\)` tais que:
+
+`\(P(A) = 1/2\)`, `\(P(B) = 1/3\)` e `\(P(A \cap B) = 1/4\)`
+
+Responda:
+
+a) Qual o probabilidade de `\(A\)` não ocorrer?  
+b) Qual a probabilidade de `\(B\)` não ocorrer?  
+c) Qual a probabilidade de `\(A\)` ou `\(B\)` ocorrer?  
+d) Qual a probabilidade de `\(A\)` não ocorrer e `\(B\)` não ocorrer?  
+e) Qual a probabilidade de `\(A\)` não ocorrer ou `\(B\)` não ocorrer?  
+f) Qual a probabilidade que ocorra apenas o `\(B\)`, e não ocorra o `\(A\)`?  
+
+---
+
+#### Respostas
+
+a) = `\(1/2\)`  
+
+b) = `\(2/3\)` 
+
+c) = `\(7/12\)`
+
+d) = `\(5/12\)`  
+
+e) = `\(3/4\)` 
+
+f) = `\(1/12\)`
+
+---
+
+class: middle, center, inverse
+
+# Probabilidade Condicional e Independência 
+
+---
+### Probabilidade Condicional 
+
+Voltando aos dados referentes ao sexo e a cor do cabelo de crianças em uma escola:
+
+
+ | Ruivo `\((R)\)` | Não Ruivo `\((\bar{R})\)` | TOTAL
+---|:---:|:---:|:---:|---:
+**Feminino `\((F)\)`** | 4  | 26 | **30**
+**Masculino `\((\bar{F})\)`** | 17 | 13 | **30** 
+**TOTAL** | **21** | **39** | **60**
+
+Agora, sabendo que foi sorteado uma aluna `\((F)\)`, qual a probabilidade dessa aluna ser ruiva `\((R)\)`?
+
+`$$P(R|F) = \frac{4}{30} = 0,1333$$`
+
+Lê-se: **"a probabilidade de R dado F"**.
+
+
+Observe que a informação prévia *"...foi sorteado um aluno do sexo Feminino..."*, restringiu o espaço amostral de `\(60\)` aluno para `\(30\)` meninas, como base para a divisão da quantidade de `\((F \cap R) = 4\)`.
+
+---
+
+### Probabilidade Condicional 
+
+Assim, para dois eventos quaisquer `\(A\)` e `\(B\)`, sendo `\(P(B)&gt;0\)`, definimos a probabilidade condicional de `\(A\)` dado que `\(B\)` ocorreu, temos:
+
+`$$P(A|B) = \frac{P(A \cap B)}{P(B)} (i)$$`
+
+Em analogia, sendo `\(P(A)&gt;0\)`, definimos a probabilidade condicional de `\(B\)` dado `\(A\)` como:
+
+`$$P(B|A) = \frac{P(A \cap B)}{P(A)} (ii)$$`
+
+Observe que o termo `\((A \cap B)\)` está presente em **(i)** e **(ii)**, então, podemos isolá-lo e igualar as duas expressões e, portanto, definimos a **Regra do Produto de Probabilidade**:
+
+`$$P(A \cap B) = P(A) \cdot P(B|A) = P(B) \cdot P(A|B)$$`
+---
+
+### Independência entre eventos.
+
+Dizemos que dois eventos `\(A\)` e `\(B\)` são independentes se  a ocorrência de `\(A\)` não depende da ocorrência de `\(B\)` e vice-versa. Nessas condições: 
+
+
+$$
+`\begin{align}
+P(A|B) = P(A) \\
+P(B|A) = P(B)
+\end{align}`
+$$
+
+Ou seja, 
+
+`$$P( A \cap B) = P(A) \cdot P(B)$$`
+---
+
+**Exemplo** 
+
+Voltando aos dados referentes ao sexo e a cor do cabelo de crianças em uma escola:, verificar se esses eventos são independentes.
+
+
+ | Ruivo `\((R)\)` | Não Ruivo `\((\bar{R})\)` | TOTAL
+---|:---:|:---:|:---:|---:
+**Feminino `\((F)\)`** | 4  | 26 | **30**
+**Masculino `\((\bar{F})\)`** | 17 | 13 | **30** 
+**TOTAL** | **21** | **39** | **60**
+
+Na independência, a `\(P(F)\)` deve ser igual à `\(P(F|R)\)` e vice- versa.
+
+Podemos verificar:
+
+`\(P(F) = P(F|R)\)`
+
+`\(P(F) = \frac{P(F \cap R)}{P(R)}\)`
+
+`\(\frac{30}{60} = \frac{4/60}{21/60}\)`
+
+`\(0,50 = 0,19\)` FALSO, então concluímos que os eventos **NÃO SÃO INDEPENDENTES**, ou seja a cordo do cabelo depende do sexo.
+
+---
+
+**Exemplo** 
+
+Agora, teste a independência para a seguinte condição:
+
+
+ | Ruivo `\((R)\)` | Não Ruivo `\((\bar{R})\)` | TOTAL
+---|:---:|:---:|:---:|---:
+**Feminino `\((F)\)`** | 15  | 27 | **42**
+**Masculino `\((\bar{F})\)`** | 8 | 13 | **28** 
+**TOTAL** | **25** | **45** | **70**
+
+Na independência, a `\(P(F)\)` deve ser igual à `\(P(F|R)\)` e vice-versa.
+
+
+Podemos verificar:
+
+`\(P(F) = P(F|R)\)`
+
+`\(P(F) = \frac{P(F \cap R)}{P(R)}\)`
+
+`\(\frac{42}{70} = \frac{15/70}{25/70}\)`
+
+`\(0,60 = 0,60\)` VERDADEIRO, então concluímos que os eventos **SÃO INDEPENDENTES**, ou seja, a cor do cabelo não depende do sexo.
+
+---
+
+**INDEPENDÊNCIA**: Imagine uma urna contento `\(2\)` bolas brancas e `\(3\)` bolas vermelhas. Serão sorteados duas bolas **COM REPOSIÇÃO**, ou seja, sorteiá-se a primeira bola, anotá-se sua cor, **devolve-se a bola para a urna** e realizá-se o segundo sorteio. Nessas condições o espaço amostral desse ensaio seguido de suas respectivas probabilidades de ocorrência, pode ser dado por: `\(S = \{ BB, BV, VB, VV\}\)`
+
+--
+
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/reposicao.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+**NÃO INDEPENDÊNCIA** Na mesma situação anterior onde serão sorteadas duas bolas, mas agora **SEM REPOSIÇÃO**, ou seja, sorteiá-se a primeira bola, anotá-se sua cor, contudo, **não se devolve a bola para a urna** e realizá-se o segundo sorteio. Nessas condições o espaço amostral é reduzido de um sorteio para outro e as probabilidades de ocorrência associadas ao espaço amostral `\(S = \{ BB, BV, VB, VV\}\)` serão dadas por:
+
+
+--
+
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/sem_reposicao.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: middle, center, inverse
+
+# Teorema de Bayes
+
+---
+#### Teorema de Bayes 
+
+Considere a incidência de uma doença em um rebanho  em diferentes faixas etárias: *jovens*, *adultos* e *idosos*, `\(E_1\)`, `\(E_2\)` e `\(E_3\)`, respectivamente.
+
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/Bayes.png" width="50%" style="display: block; margin: auto;" /&gt;
+Sabe-se que `\(P(E_1) = 0,60\)`, `\(P(E_2) = 0,30\)` e `\(P(E_3) = 0,10\)`, além disso, é conhecido que as incidências da doença nas diferentes faixas etárias são:
+.pull-left[
+`\(P(D|E_1)=0,02\)`  
+`\(P(D|E_2)=0,05\)`  
+`\(P(D|E_3)=0,10\)`  
+Toma-se  um  animal desse rebanho  ao  acaso  e  verificamos que ele está doente.
+]
+.pull-right[
+   Qual  a probabilidade do animal escolhida pertencer à faixa etária `\(E_1\)`, ou seja ?
+`$$P(E_1|D) = ?$$`
+]
+
+---
+
+Aplicando a expressão da probabilidade condicional, temos que:
+
+`$$P(E_1 | D) = \frac{P(E_1 \cap D)}{P(D)} \;\;\;\;\;(i)$$` 
+
+Assim, podemos isolar `\(P(E_1 \cap D)\)` em (i):
+
+`\(P(E_1 \cap D) = P(E_1|D) \cdot P(D)\)`, da mesma forma que: 
+
+`\(P(E_1 \cap D) = P(D|E_1) \cdot P(E_1)\)`
+
+Assim, podemos reescrever (i) como:
+
+`$$P(E_1 | D) = \frac{P(D|E_1) \cdot P(E_1)}{P(D)}$$` 
+
+O evento Doente `\((D)\)` pode se escrito como a reunião de 3 eventos disjuntos, ou seja:
+
+`$$D = (E_1 \cap D) \cup (E_2 \cap D) \cup (E_3 \cap D)$$`
+Aplicando a função de probabilidade temos:
+
+`$$P(D) = P(E_1 \cap D) + P(E_2 \cap D) + P(E_3 \cap D)$$`
+
+---
+
+Em analogia à passagem anterior:
+
+`$$P(D) = P(D|E_1) \cdot P(E_1) + P(D|E_2) \cdot P(E_2) + P(D|E_3) \cdot P(E_3)$$`
+Assim, podemos reescrever (i) como:
+
+$$
+P(E_1 | D) = \frac{P(D|E_1) \cdot P(E_1)}{P(D|E_1) \cdot P(E_1) + P(D|E_2) \cdot P(E_2) + P(D|E_3) \cdot P(E_3)}
+$$ 
+
+O Teorema  de  Bayes expressa  uma  probabilidade condicional em termos de outras probabilidades condicionais e marginais. 
+
+Essas probabilidades podem ser teoricamente deduzidas a partir de um modelo representado pelo  espaço  amostral  em  que  esses  eventos  são  definidos, pela expressão:
+
+
+`$$P(E_i | D) = \frac{P(D|E_i) \cdot P(E_i)}{ \sum \limits_{j=1}^k P(D|E_j) \cdot P(E_j)}$$` 
+
+---
+
+Portanto, para o exemplo temos que a probabilidade da pessoa escolhida ser pretencente à faixa etária `\(E_1\)`, dado que ele é `\(D\)` é:
+
+`$$P(E_1 | D) = \frac{0,02 \cdot 0,60}{ 0,02  (0,60) + 0,05  (0,30) + 0,10  (0,10)}$$` 
+
+`$$P(E_1 | D) = \frac{0,012}{ 0,037}$$` 
+
+`$$P(E_1 | D) = 0,3243$$` 
+
+Aplicando a mesma fórmula podemos calcular:
+
+
+$$
+P(E_2 | D) = \frac{0,05 \cdot 0,30}{ 0,02  (0,60) + 0,05 (0,30) + 0,10  (0,10)}
+$$ 
+
+
+`\(P(E_2 | D) = \frac{0,015}{ 0,037}\)` 
+
+`\(P(E_2 | D) = 0,4054\)`
+
+---
+
+
+$$
+P(E_3 | D) = \frac{0,10 \cdot 0,10}{ 0,02  (0,60) + 0,05  (0,30) + 0,10  (0,10)}
+$$ 
+
+
+`\(P(E_3 | D) = \frac{0,01}{ 0,037}\)`
+
+`\(P(E_3 | D) = 0,2703\)`
+
+---
+### Exercícios
+
+1-Considere dois eventos `\(A\)` e `\(B\)` disjuntos, com: `\(P(A)=0,3\)` e `\(P(B)=0,5\)`. Calcule:  
+a) A probabilidade de `\(A\)` e `\(B\)` ocorrer.  
+b) A probabilidade de `\(A\)` ou `\(B\)` ocorrer.  
+c) A probabilidade de `\(A\)` ocorrer dado que `\(B\)` ocorreu.  
+d) A probabilidade de `\(A\)` não ocorrer.  
+e) A probabilidade de `\(A\)` não ocorrer e `\(B\)` não ocorrer.  
+
+---
+
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/exercicio_aula7_1.png" width="100%" style="display: block; margin: auto;" /&gt;
+---
+2-Se `\(P(A \cup B) = 0,8\)`,  `\(P(A)=0,5\)` e `\(P(B) = x\)`, determine `\(x\)` para os casos:  
+
+a) A e B serem disjuntos.  
+b) A e B serem independentes.
+
+---
+
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/exercicio_aula7_2.png" width="100%" style="display: block; margin: auto;" /&gt;
+---
+3-Em uma turma de Estatística, temos `\(40\%\)` de estudantes do sexo masculino. Entre eles, `\(20\%\)` não entregaram a lista de exercícios. Ao passo que entre os estudantes do sexo feminino, essa porcentagem foi de `\(50\%\)`. Qual a probabilidade de que um estudante selecionado ao acaso seja:   
+
+a) Do sexo masculino e não tenha entregado a lista de exercícios. 
+
+b) Do sexo feminino, ou não tenha entregado a lista de exercícios.
+
+---
+
+3-Em uma turma de Estatística, temos `\(40\%\)` de estudantes do sexo masculino. Entre eles, `\(20\%\)` não entregaram a lista de exercícios. Ao passo que entre os estudantes do sexo feminino, essa porcentagem foi de `\(50\%\)`. Qual a probabilidade de que um estudante selecionado ao acaso seja:   
+
+a) Do sexo masculino e não tenha entregado a lista de exercícios.  
+**R:** `\(0,08\)` ou `\(8\%\)`.
+
+b) Do sexo feminino ou não tenha entregado a lista de exercícios.  
+**R:** `\(0,68\)` ou `\(68\%\)`
+
+---
+
+4-Se  `\(P(B) = 0,4\)`, `\(P(A)=0,7\)` e `\(P(A \cap B)= 0,3\)`, calcule `\(P(A|\bar{B})\)`.
+
+---
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/exercicio_aula7_4.png" width="100%" style="display: block; margin: auto;" /&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

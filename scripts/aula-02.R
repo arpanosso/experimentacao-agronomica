@@ -105,6 +105,20 @@ mean(x)
 
 # Resolver para Casa 7 e o 8
 
+# Exercício 7
+A <- 3421
+B <- A %/% 100
+C <- A %% 100
+paste("B =",B ,"e C =", C)
+
+# Exercício 8
+a <- 872
+c <- a%/% 100
+d <- a%% 100 %/% 10
+u <- a %% 10
+soma = c + d + u
+paste("A soma é", soma)
+
 # Exercício 9
 A <- 30
 B <- 9
@@ -128,6 +142,23 @@ seq(0,25,5)
 minha_sequencia <- seq(10,0,-2)
 
 # Para a casa 12 e o 13
+# Exercício 12
+
+positivos <- seq(1,10,2)
+negativos <- -1*seq(2,10,2)
+
+S = sum(positivos/(positivos^2) + negativos/(negativos^2))
+paste("O valor de S é:",
+      round(S,4))
+
+# Exercíco 13
+
+#Gerar idades aleatórias
+set.seed(1235) # semente aleatória
+idade <- round(runif(30, 3, 97)) # 30 valores entre 3 e 97 anos
+ifelse(idade <= 25, "jovem",
+       ifelse(idade <= 60, "adulto", "idoso"))
+
 
 # Lista 02 ----------------------------------------------------------------
 x <- c(11, 13, 20, 10, 10, 13, 16, 17, 16, 12)

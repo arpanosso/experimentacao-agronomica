@@ -47,7 +47,7 @@ Para isso deve-se associar a cada resultado elementar `\((e_i)\)` do espaço amo
 
 Agora defini-se `\(X\)`, como a variável aleatória, que é o número de alelos dominantes `\(A\)`. Tem-se:
 
-&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/va_d_01.png" width="100%" style="display: block; margin: auto;" /&gt;
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/va_d_01.png" alt="" width="100%" style="display: block; margin: auto;" /&gt;
 
 Note que para ser discreta, a variável aleatória (v.a.) deve assumir valores em um conjunto finito ou infinito, porém contável.
 
@@ -97,7 +97,7 @@ tibble(x=0:2,
 ---
 
 
-&lt;img src="Aula04_files/figure-html/plot_1-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="Aula04_files/figure-html/plot_1-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
 ---
 class: middle, center, inverse
@@ -374,7 +374,7 @@ O modelo probabilístico da variável aleatória `\(X\)`, é a forma específica
 
 # Distribuição de Bernoulli
 
-&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/bernoulli_1.png" width="40%" style="display: block; margin: auto;" /&gt;
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/bernoulli_1.png" alt="" width="40%" style="display: block; margin: auto;" /&gt;
 
 ---
 ### Distribuição de Bernoulli
@@ -397,7 +397,9 @@ X \begin{cases}
 \end{cases}
 $$
 
-com `\(P(X=1) = p\)` e `\(P(X=0) = 1-p = q\)`
+com `\(P(X=1) = p\)` e, consequentemente:
+
+`\(P(X=0) = 1-p = q\)`
 
 ---
 
@@ -457,7 +459,7 @@ tibble(x,px) |&gt;
 
 .pull-right[
 
-&lt;img src="Aula04_files/figure-html/plot_2-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="Aula04_files/figure-html/plot_2-1.png" alt="" style="display: block; margin: auto;" /&gt;
 ]
 
 `$$E(X) = p = 0,7$$`  
@@ -485,7 +487,7 @@ Os possíveis valores de `\(X\)` são os inteiros `\(0, 1, 2,..., n\)`. A distri
 
 **Exemplo**: No lançamento de uma moeda, vamos definir como Sucesso o evento *cair a face cara*:
 
-&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/binomial_1.png" width="70%" style="display: block; margin: auto;" /&gt;
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/binomial_1.png" alt="" width="70%" style="display: block; margin: auto;" /&gt;
 
 
 
@@ -495,11 +497,11 @@ Há `\(2 × 2 × 2 = 8\)` resultados possíveis, os quais estão relacionados na
 ---
 Uma característica interessante dos experimentos considerados é que estamos interessados apenas no número total de sucessos e não na ordem que eles ocorrem. Segue abaixo o diagrama de árvore das probabilidades binomiais no lançamento de 3 moedas, ou seja, `\(n=3\)` e `\(P(S) = p\)` e `\(P(F) = q\)`.
 
-&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/binomial_2.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/binomial_2.png" alt="" width="60%" style="display: block; margin: auto;" /&gt;
 
 ---
 
-&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/binomial_3.png" width="100%" style="display: block; margin: auto;" /&gt;
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/binomial_3.png" alt="" width="100%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -528,7 +530,7 @@ Se `\(X\)` é uma variável aleatória com distribuição Binomial ela apresenta
 ---
 E se, ao invés de `\(3\)` moedas, tivéssemos `\(4\)` moedas?
 
-&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/binomial_4.png" width="100%" style="display: block; margin: auto;" /&gt;
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/binomial_4.png" alt="" width="100%" style="display: block; margin: auto;" /&gt;
 
 Qual a probabilidade do número de caras ser igual ao número de coroas?
 
@@ -541,16 +543,32 @@ Qual a probabilidade do número de caras ser igual ao número de coroas?
 
 class: middle, center
 
-**Montando a fórmula na calculadora científica**
 
 
-![](img/calculadora10.png)
 
+
+``` r
+# montanto a expressão
+choose(4,2)*1/2^2*1/2^(4-2)
+```
+
+```
+#&gt; [1] 0.375
+```
+
+``` r
+# ou utilizando a  função
+dbinom(2, 4, 1/2)
+```
+
+```
+#&gt; [1] 0.375
+```
 
 
 ---
 
-No R podemos utilizar a função `dbinon()` com os argumentos `\(x\)`, `\(n\)` e `\(p\)` a probabilidade de sucesso.
+Podemos utilizar a função `dbinon()` com os argumentos `\(x\)`, `\(n\)` e `\(p\)` a probabilidade de sucesso para calcular todas as probabilidades associadas aos elementos do espaço amostral.
 .pull-left[
 
 ``` r
@@ -581,7 +599,7 @@ tibble(x,px) %&gt;%
            fill="gray")
 ```
 
-&lt;img src="Aula04_files/figure-html/unnamed-chunk-14-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="Aula04_files/figure-html/unnamed-chunk-16-1.png" alt="" style="display: block; margin: auto;" /&gt;
 ]
 
 ---
@@ -596,7 +614,7 @@ A propriedade geral da distribuição binomial: quando `\(p\)` e `\(q\)` são al
 
 ---
 .pull-left[
-&lt;img src="Aula04_files/figure-html/unnamed-chunk-15-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="Aula04_files/figure-html/unnamed-chunk-17-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
 
 |   |        |
@@ -612,7 +630,7 @@ A propriedade geral da distribuição binomial: quando `\(p\)` e `\(q\)` são al
 ]
 
 .pull-right[
-&lt;img src="Aula04_files/figure-html/unnamed-chunk-17-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="Aula04_files/figure-html/unnamed-chunk-19-1.png" alt="" style="display: block; margin: auto;" /&gt;
 
 
 
@@ -642,10 +660,10 @@ A propriedade geral da distribuição binomial: quando `\(p\)` e `\(q\)` são al
 --
 
 ### Respostas
-a) `\(0,3125\)`  
-b) `\(0,6562\)`  
-c) `\(0,6562\)`  
-d) `\(0,9844\)`  
+a) `\(0{,}3125\)`  
+b) `\(0{,}6562\)`  
+c) `\(0{,}6562\)`  
+d) `\(0{,}9844\)`  
 
 ---
 
@@ -661,17 +679,20 @@ Calcule a esperança e a variância dessa distribuição de probabilidade.
 
 `\(P(S) = p = \frac{2}{5}\)` e, portanto, `\(P(F) = q = \frac{3}{5}\)` 
 
-&lt;img src="Aula04_files/figure-html/unnamed-chunk-19-1.png" width="50%" height="50%" style="display: block; margin: auto;" /&gt;
+.pull-left[
+&lt;img src="Aula04_files/figure-html/unnamed-chunk-21-1.png" alt="" width="50%" height="50%" style="display: block; margin: auto;" /&gt;
+]
 
+.pull-right[
 
 |     0|     1|     2|     3|
 |-----:|-----:|-----:|-----:|
 | 0.216| 0.432| 0.288| 0.064|
 
 
-`\(E(X) = 1,2\)`   
-`\(Var(X) = 0,72\)`
-
+`\(E(X) = 1{,}2\)`   
+`\(Var(X) = 0{,}72\)`
+]
 ---
 3) Uma urna contém `\(52\)` bolas sendo `\(13\)` brancas e `\(39\)` pretas.
 
@@ -688,7 +709,7 @@ Calcule a esperança e a variância dessa distribuição de probabilidade.
 
 `\(P(S) = p = \frac{13}{52}\)` e, portanto, `\(P(F) = q = \frac{39}{52}\)` 
 
-&lt;img src="Aula04_files/figure-html/unnamed-chunk-21-1.png" width="40%" height="40%" style="display: block; margin: auto;" /&gt;
+&lt;img src="Aula04_files/figure-html/unnamed-chunk-23-1.png" alt="" width="40%" height="40%" style="display: block; margin: auto;" /&gt;
 
 
 |         0|        1|         2|         3|        4|         5|         6|
@@ -696,9 +717,9 @@ Calcule a esperança e a variância dessa distribuição de probabilidade.
 | 0.1779785| 0.355957| 0.2966309| 0.1318359| 0.032959| 0.0043945| 0.0002441|
 
 
-a) `\(0,0002441\)`;  
-b) `\(E(X) = 1,5\)` e `\(Var(X) = 1,125\)`;  
-c) `\(0,0043945\)`
+a) `\(0{,}0002441\)`;  
+b) `\(E(X) = 1{,}5\)` e `\(Var(X) = 1{,}125\)`;  
+c) `\(0{,}0043945\)`
 
 ---
 
@@ -743,7 +764,7 @@ Ou seja, o número médio e a variância de ocorrências de eventos por unidade 
 
 --
 
-&lt;img src="Aula04_files/figure-html/unnamed-chunk-23-1.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="Aula04_files/figure-html/unnamed-chunk-25-1.png" alt="" width="60%" style="display: block; margin: auto;" /&gt;
 ---
 
 class: middle, center
@@ -754,9 +775,26 @@ class: middle, center
 
 
 
-**Montando a fórmula na calculadora científica**
 
-![](img/calculadora11.png)
+
+
+``` r
+# montanto a expressão
+exp(-2)*2^4/factorial(4)
+```
+
+```
+#&gt; [1] 0.09022352
+```
+
+``` r
+# ou utilizando a  função
+dpois(4,2) 
+```
+
+```
+#&gt; [1] 0.09022352
+```
 
 ---
 **Exercício 2)** Durante uma onda de calor intensa no verão em uma cidade do interior de São Paulo, o número de internações hospitalares por problemas de saúde relacionados ao calor (insolação, desidratação grave, insuficiência renal) por dia é uma variável aleatória que segue um modelo de Poisson com parâmetro `\(\lambda=5\)`, isto é, a média histórica registrada é de `\(5\)` internações por dia nesses períodos.
@@ -769,7 +807,7 @@ a) Calcule a probabilidade de ocorrerem mais de `\(2\)` internações em um dete
 ---
 
 .pull-left[
-&lt;img src="Aula04_files/figure-html/unnamed-chunk-24-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="Aula04_files/figure-html/unnamed-chunk-28-1.png" alt="" style="display: block; margin: auto;" /&gt;
 ]
 
 .pull-right[
@@ -792,7 +830,7 @@ b) Calcule a probabilidade de ocorrerem até `\(4\)` internações em `\(2\)` di
 
 
 .pull-left[
-&lt;img src="Aula04_files/figure-html/unnamed-chunk-25-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="Aula04_files/figure-html/unnamed-chunk-29-1.png" alt="" style="display: block; margin: auto;" /&gt;
 ]
 
 .pull-right[
@@ -809,7 +847,7 @@ Por exemplo, se o período de tempo considerado para o exemplo anterior for de `
 **Exercício 3)** Supondo que o número médio de bactérias por litro de água purificada é `\(2\)`, qual é a probabilidade que `\(5\)` ou mais bactérias sejam encontradas em uma amostra de `\(3\)` litros de água?
 --
 .pull-left[
-&lt;img src="Aula04_files/figure-html/unnamed-chunk-26-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="Aula04_files/figure-html/unnamed-chunk-30-1.png" alt="" style="display: block; margin: auto;" /&gt;
 ]
 
 .pull-right[
@@ -881,31 +919,31 @@ class: middle, center, inverse
 --
 **Extensão total da bacia hidrográfica do rio Amazonas?**
 
-&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/vac_1.png" width="65%" style="display: block; margin: auto;" /&gt;
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/vac_1.png" alt="" width="65%" style="display: block; margin: auto;" /&gt;
 
 ---
 
 **Sistema nefrálgico, seríamos capazes de medir com exatidão o volume total desse sistema?**
 
-&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/vac_2.png" width="65%" style="display: block; margin: auto;" /&gt;
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/vac_2.png" alt="" width="65%" style="display: block; margin: auto;" /&gt;
 
 ---
 
 
 **Superfície específica de um agregado do solo?**
 
-&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/vac_3.png" width="65%" style="display: block; margin: auto;" /&gt;
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/vac_3.png" alt="" width="65%" style="display: block; margin: auto;" /&gt;
 
 
 ---
 **O comprimento e volume total de poros na casca de um ovo de galinha?**
 
 .pull-left[
-&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/vac_4.png" width="100%" style="display: block; margin: auto;" /&gt;
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/vac_4.png" alt="" width="100%" style="display: block; margin: auto;" /&gt;
 ]
 
 .pull-right[
-&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/vac_5.png" width="100%" style="display: block; margin: auto;" /&gt;
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/vac_5.png" alt="" width="100%" style="display: block; margin: auto;" /&gt;
 ]
 
 ---
@@ -930,12 +968,12 @@ Sendo resultado de um processo de mensuração, o seu valor pode ser pensado com
 
 .pull-left[
 
-&lt;img src="https://images.pexels.com/photos/5063385/pexels-photo-5063385.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=650&amp;w=940" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="https://images.pexels.com/photos/8447778/pexels-photo-8447778.jpeg" alt="" width="60%" style="display: block; margin: auto;" /&gt;
 ]
 
 .pull-right[
 
-Quando dizemos que a altura de uma criança é `\(125\)`, estamos medindo sua altura usando como unidade de medida o `\(cm\)`, e portanto o valor observado é, na realidade, um valor entre `\(124,5\)` cm e `\(125,5\)` cm, por exemplo.
+Quando dizemos que o comprimento de um pedaço de madeira é `\(20\)`, estamos usando como unidade de medida o `\(cm\)`, por exemplo e, portanto o valor observado é, na realidade, um valor entre `\(19{,}9\)` cm e `\(20{,}1\)` cm.
 ]
 
 
@@ -960,7 +998,7 @@ Relembrando o conceito do histograma a respeito da densidade de frequência `\((
 
 
 .pull-left[
-&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/salario_hit.png" width="100%" style="display: block; margin: auto;" /&gt;
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/salario_hit.png" alt="" width="100%" style="display: block; margin: auto;" /&gt;
 ]
 
 .pull-right[
@@ -972,7 +1010,7 @@ Ou seja, com um número suficientemente grande de observações, diminuindo-se o
 ---
 
 .pull-left[
-&lt;img src="Aula04_files/figure-html/unnamed-chunk-35-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="Aula04_files/figure-html/unnamed-chunk-39-1.png" alt="" style="display: block; margin: auto;" /&gt;
 ]
 
 .pull-right[
@@ -989,7 +1027,7 @@ A função matemática `\(f(x)\)`, cujo gráfico produz tal curva é chamada **f
 
 ---
 .pull-left[
-&lt;img src="Aula04_files/figure-html/unnamed-chunk-36-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="Aula04_files/figure-html/unnamed-chunk-40-1.png" alt="" style="display: block; margin: auto;" /&gt;
 ]
 
 .pull-right[
@@ -1017,7 +1055,7 @@ Uma v.a. `\(X\)` tem distribuição normal com parâmetros `\(\mu\)` e `\(\sigma
 
 `$$f(x) = \frac{1}{\sigma \sqrt{2\pi} }e^{\frac{-(x-\mu)^2}{2\sigma^2}} , -\infty &lt; x &lt; +\infty$$`
 
-&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/hist_1.png" width="70%" style="display: block; margin: auto;" /&gt;
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/hist_1.png" alt="" width="70%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -1045,7 +1083,7 @@ Onde:
 `$$X \sim N(\mu; \sigma^2)$$`
 
 
-&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/hist_2.png" width="70%" style="display: block; margin: auto;" /&gt;
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/hist_2.png" alt="" width="85%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -1053,11 +1091,11 @@ Onde:
 
 Duas distribuições normais com diferentes médias, mas com o mesmo desvio padrão `\((\sigma)\)`
 
-&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/hist_3.png" width="50%" style="display: block; margin: auto;" /&gt;
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/hist_3.png" alt="" width="50%" style="display: block; margin: auto;" /&gt;
 
 Três distribuições normais com médias iguais, mas com diferentes desvios padrões
 
-&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/hist_4.png" width="50%" style="display: block; margin: auto;" /&gt;
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/hist_4.png" alt="" width="50%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -1068,13 +1106,10 @@ class: middle, inverse, center
 
 ## https://arpanosso.shinyapps.io/estatinfo/
 
----
-
-&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/hist_5.png" width="90%" style="display: block; margin: auto;" /&gt;
 
 ---
 
-&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/hist_6.png" width="90%" style="display: block; margin: auto;" /&gt;
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/hist_6.png" alt="" width="90%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -1118,7 +1153,7 @@ Se `\(X \sim N(\mu, \sigma^2)\)`, então a variável aleatória `\(Z\)` definida
 
 A vantagem de se usar a variável `\(Z\)` é que as áreas, ou as probabilidades, associadas à distribuição normal padronizada são tabeladas. Assim, distribuição normal padrão é fundamental para o cálculo de probabilidades relativas a uma distribuição normal qualquer.
 
-&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/hist_7.png" width="90%" style="display: block; margin: auto;" /&gt;
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/hist_7.png" alt="" width="90%" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -1127,7 +1162,7 @@ A vantagem de se usar a variável `\(Z\)` é que as áreas, ou as probabilidades
 
 [Tabela - Normal Padrão](https://github.com/arpanosso/estatinfo/raw/master/docs/TabelaNormalPadrao.pdf) 
 
-&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/hist_8.png" width="90%" style="display: block; margin: auto;" /&gt;
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/hist_8.png" alt="" width="90%" style="display: block; margin: auto;" /&gt;
 
 ---
 class: center,inverse
@@ -1143,10 +1178,10 @@ Outro vídeo bastante interessante do **Khan Academy Brasil** apresentando uma e
 
 A figura abaixo ilustra a probabilidade fornecida pela tabela, ou seja, 
 
-&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/hist_9.png" width="70%" style="display: block; margin: auto;" /&gt;
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/hist_9.png" alt="" width="70%" style="display: block; margin: auto;" /&gt;
 ---
 
-### a) `\(P(-1,73 \le Z \le 0)\)`
+### a) `\(P(-1{,}73 \le Z \le 0)\)`
 
 
 
@@ -1158,15 +1193,15 @@ A figura abaixo ilustra a probabilidade fornecida pela tabela, ou seja,
 #&gt; [1] 0.4581849
 ```
 
-&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/hist_10.png" width="70%" style="display: block; margin: auto;" /&gt;
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/hist_10.png" alt="" width="70%" style="display: block; margin: auto;" /&gt;
 
 ---
 
-#### b) `\(P( Z \ge 1,73)\)`
+#### b) `\(P( Z \ge 1{,}73)\)`
 
-#### c) `\(P( Z \le -1,73)\)`
+#### c) `\(P( Z \le -1{,}73)\)`
 
-&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/hist_11.png" width="40%" style="display: block; margin: auto;" /&gt;
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/hist_11.png" alt="" width="40%" style="display: block; margin: auto;" /&gt;
 
 por simetria:
 
@@ -1183,10 +1218,10 @@ pnorm(-1.73)
 
 ---
 
-#### d) `\(P(Z \le 1,73)\)`
+#### d) `\(P(Z \le 1{,}73)\)`
 
 
-&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/hist_12.png" width="40%" style="display: block; margin: auto;" /&gt;
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/hist_12.png" alt="" width="40%" style="display: block; margin: auto;" /&gt;
 
 
 
@@ -1203,10 +1238,10 @@ pnorm(1.73)
 
 ---
 
-#### e) `\(P(0,47 \le Z \le 1,73)\)`
+#### e) `\(P(0{,}47 \le Z \le 1{,}73)\)`
 
 
-&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/hist_13.png" width="40%" style="display: block; margin: auto;" /&gt;
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/hist_13.png" alt="" width="40%" style="display: block; margin: auto;" /&gt;
 
 
 
@@ -1218,11 +1253,11 @@ pnorm(1.73) - pnorm(0.47)
 #&gt; [1] 0.2773624
 ```
 
-`$$\begin{aligned}P(0,47 \le Z \le 1,73) &amp;= P(0 \le Z \le 1,73)  - P(0 \le Z \le 0,47) \\ &amp;= 0,4582 - 0,1808 = 0,2774\end{aligned}$$`
+`$$\begin{aligned}P(0,47 \le Z \le 1{,}73) &amp;= P(0 \le Z \le 1{,}73)  - P(0 \le Z \le 0{,}47) \\ &amp;= 0{,}4582 - 0{,}1808 = 0{,}2774\end{aligned}$$`
 
 ---
 
-&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/hist_14.png" width="90%" style="display: block; margin: auto;" /&gt;
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/hist_14.png" alt="" width="90%" style="display: block; margin: auto;" /&gt;
 ---
 ## Exemplo 2
 
@@ -1268,13 +1303,13 @@ P(X \geq 165) = P\left( \frac{X -\mu}{\sigma} &gt; \frac{165-170}{5}\right) = P(
 $$
 
 $$
-P(Z \geq -1) = P(-1 \leq Z \leq 0 ) + P(Z \geq 0) = P(0 \leq Z \leq 1 ) + 0,50
+P(Z \geq -1) = P(-1 \leq Z \leq 0 ) + P(Z \geq 0) = P(0 \leq Z \leq 1 ) + 0{,}50
 $$
 
 $$
-P(Z \geq -1) = 0,3413 + 0,50 = 0,8413
+P(Z \geq -1) = 0{,}3413 + 0{,}50 = 0{,}8413
 $$
-Portanto, o número esperado é `\(10.000 \times 0,8413 = 8413\)` unidades.
+Portanto, o número esperado é `\(10.000 \times 0{,}8413 = 8413\)` unidades.
 
 No R:
 
@@ -1352,7 +1387,7 @@ que é aproximadamente `\(N(0,1)\)`.
 
 `\(P(a \le X \le b) = \sum_{x=a}^b {n \choose x}p^x(1-p)^{n-x} \cong P\left( \frac{a-np}{\sqrt{np(1-p)}} \le Z \le \frac{b-np}{\sqrt{np(1-p)}} \right)\)`
 
-&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/hist_17.png" width="40%" style="display: block; margin: auto;" /&gt;
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/hist_17.png" alt="" width="40%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -1379,9 +1414,9 @@ Supondo que `\(X \sim b(15; 0,4)\)`, calcule a probabilidade:
 
 Resposta:
 
-`$$P(7 \le X \le 10) = P \left( \frac{(\frac{7-0,50}{15})-0,40}{\sqrt{\frac{0,40(1-0,40)}{15}}} \le Z \le \frac{(\frac{10+0,50}{15})-0,40}{\sqrt{\frac{0,40(1-0,40)}{15}}} \right)$$`
+`$$P(7 \le X \le 10) = P \left( \frac{(\frac{7-0,50}{15})-0{,}40}{\sqrt{\frac{0{,}40(1-0{,}40)}{15}}} \le Z \le \frac{(\frac{10+0{,}50}{15})-0{,}40}{\sqrt{\frac{0{,}40(1-0{,}40)}{15}}} \right)$$`
 
-`$$P(0,263 \le Z \le 2,368) = 0,49111 - 0,10194 = 0,389$$`
+`$$P(0{,}263 \le Z \le 2{,}368) = 0{,}49111 - 0{,}10194 = 0{,}389$$`
 
 no R:
 
@@ -1406,6 +1441,430 @@ pbinom(11,15,0.4) - pbinom(6,15,0.4)
 ```
 
 
+---
+
+class: middle, center, inverse
+
+# Distribuições Amostral
+
+---
+
+## Parâmetro e Estatística
+
+**Parâmetro**: é uma medida usada para descrever uma característica da população.
+
+
+**Estatística** ou **Estimador**: é qualquer função de uma amostra aleatória (fórmula ou expressão), construída com o propósito de servir como instrumento para descrever alguma característica da amostra e para fazer *inferência* a respeito da característica na população.  
+
+
+Resumo | Parâmetro | Estatística
+:---|:---:|:---:  
+Média | `\(\mu\)` | `\(\bar{x}=\frac{1}{n} \sum \limits_{i=1}^n x_i\)`
+Variância | `\(\sigma^2\)`| `\(s^2 = \frac{1}{n-1} \sum \limits_{i=1}^n {(x_i - \mu)^2}\)`
+Proporção | `\(\pi\)` | `\(\hat{p}= \frac{X}{n}\)`
+Correlação | `\(\rho\)` | `\(r = \frac{\sum_{i=1}^n(x_1-\bar{x})(y_i-\bar{y})}{\sqrt{\sum_{i=1}^n(x_1-\bar{x})^2(y_i-\bar{y})^2}}\)`
+---
+
+Toda **estatística**, sendo uma função de uma amostra aleatória `\(X_1, X_2, \cdots X_n\)`, é também uma variável aleatória e tem uma distribuição. 
+
+Assim, o comportamento da estatística pode ser descrito por alguma distribuição de probabilidade, agora denominada **distribuição amostral**. 
+
+Assim, cada **estatística** é uma variável aleatória e sua distribuição de probabilidade é chamada &lt;u&gt;distribuição amostral da estatística&lt;/u&gt;.
+
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/amostra_1.png" alt="" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: middle, center, inverse
+
+# Distribuições Amostral da Média
+
+---
+Seja a variável aleatória `\(X\)` que denota o tempo em dias de germinação de sementes de uma espécie vegetal, após a semeadura. 
+
+Considerando a população de todas sementes dessa espécie, suponha que `\(X\)` tem a distribuição de probabilidade apresentada abaixo. 
+
+Uma amostra aleatória simples **COM REPOSIÇÃO** `\((X_1\)`, `\(X_2)\)` de `\(2\)` covas `\((n = 2)\)` é tomada nesta área. Qual a distribuição do tempo médio amostral em dias para a germinação?
+
+
+`\(x\)` | `\(0\)` | `\(1\)` | `\(2\)` | `\(3\)` 
+---|---|---|---|---
+`\(P(X)\)` | `\(0{,}20\)` | `\(0{,}40\)`| `\(0{,}30\)`| `\(0{,}10\)`
+
+
+---
+
+.pull-left[
+
+Distribuição de Probabilidade
+
+&lt;img src="Aula04_files/figure-html/unnamed-chunk-65-1.png" alt="" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+
+Calculando a Esperança de X: 
+
+`$$E(X) = \sum \limits_{i=1}^k x_i \cdot P(x_i) = 1{,}30\;dias$$`
+
+Calculando a Variância de X.
+
+`$$\begin{aligned} Var(X) &amp;= \sum \limits_{i=1}^k x_i^2 \cdot P(x_i) - [E(X)]^2 \\ Var(X) &amp;= 0{,}81\;dias^2 \end{aligned}$$`
+
+]
+
+Definimos a média a partir da tomada de duas amostras temos:
+
+`$$\bar{X} = \frac{X_1+X_2}{2}$$`
+
+---
+
+De acordo com a definição de amostra aleatória simples com reposição, `\(X_1\)` e `\(X_2\)` são variáveis aleatórias independentes, assim, a distribuição conjunta pode ser obtida multiplicando-se as probabilidades marginais.
+
+
+`$$P(0 \cap 1) = P(0) \times P(1) = 0{,}2 \times 0,4 = 0{,},08$$`
+
+.pull-left[
+Tabela com os possíveis valores de médias `\(\bar{X}\)`, dados os valores de `\(X\)`.
+
+`\(X_1 / X_2\)` | 0 | 1 | 2 | 3 
+:---:|---|---|---|---
+**0** | 0,00 | 0,50 | 1,00 | 1,50
+**1** | 0,50 | 1,00 | 1,50 | 2,00
+**2** | 1,00 | 1,50 | 2,00 | 2,50
+**3** | 1,50 | 2,00 | 2,50 | 3,00
+ 
+]
+
+.pull-right[
+
+Tabela com a distribuição conjunta de `\(X_1\)` e `\(X_2\)`, ou seja, as probabilidades `\(P(\bar{X})\)`.
+
+`\(X_1 / X_2\)` | 0 | 1 | 2 | 3  | `\(\sum\)`
+:---:|---|---|---|---|---
+**0** | 0,04 | 0,08 | 0,06 | 0,02 | **0,2**
+**1** | 0,08 | 0,16 | 0,12 | 0,04 | **0,4**
+**2** | 0,06 | 0,12 | 0,09 | 0,03 | **0,3**
+**3** | 0,02 | 0,04 | 0,03 | 0,01 | **0,1**
+`\(\sum\)`| **0,2** | **0,4** | **0,3** | **0,1** | **1,00**
+]
+
+--
+
+&lt;/br&gt;
+---
+
+
+Distribuição de probabilidade de `\(\bar{X}\)`.
+
+`\(\bar{X}\)` | `\(0\)` | `\(0{,}5\)` | `\(1\)` | `\(1{,}5\)` | `\(2{,}0\)`  | `\(2{,}5\)` | `\(3{,}0\)`  
+---|---|---|---|---|---|---|---
+`\(P(\bar{X})\)` | `\(0{,}04\)` | `\(0{,}16\)`| `\(0{,}28\)`| `\(0{,}28\)` | `\(0{,}17\)` | `\(0{,}06\)` | `\(0{,}01\)` 
+
+&lt;img src="Aula04_files/figure-html/unnamed-chunk-66-1.png" alt="" style="display: block; margin: auto;" /&gt;
+
+---
+
+#### Cálculo da Esperança e da Variância da Média do Número de dias para Germinação de `\(X\)` `\((n=2)\)`.
+
+`$$E(\bar{X}) = \sum \limits_{n=1}^k = \bar{x_i} \cdot P(\bar{x_i}) = 1{,}30 \;dias$$`
+
+`$$Var(\bar{X}) = E(\bar{X}^2) - [E(\bar{X})]^2$$`
+
+`$$Var(\bar{X}) = 2{,}095 - (1{,}3)^2$$`
+
+`$$Var(\bar{X}) = 0{,}405\;dias^2= \frac{\sigma^2}{n} = \frac{0{,}81}{2} = \frac{Var(X)}{n}$$`
+Se `\(X_1, X_2, \cdots, X_n\)` constitui uma amostra aleatória simples com reposição de uma população que tem média `\(\mu\)` e variância `\(\sigma^2\)`, então:
+
+`$$E(\bar{X}) = \mu$$`
+
+`$$Var(\bar{X}) = \frac{\sigma^2}{n}$$` 
+
+`$$DP(\bar{X}) = \frac{\sigma}{\sqrt{n}}$$`
+
+---
+
+## Observações importantes
+
+- O desvio padrão da média `\(DP(\bar{X})\)` e o erro padrão da média `\(s(m)\)` são termos equivalentes. 
+
+- O erro padrão da média é geralmente usado para evitar confusão com o desvio padrão `\((\sigma)\)` das observações.
+
+- O aumento do tamanho da amostra `\((n)\)` o  desvio padrão da distribuição da média diminui, portanto os valores de `\(\bar{X}\)` são mais próximos à `\(\mu\)`. 
+
+- Estima-se o erro padrão da média usando o tamanho da amostra `\((n)\)` e desvio padrão `\((s)\)` de uma única amostra de observações.
+
+- À medida que o tamanho da amostra aumenta temos uma estimativa mais precisa do desvio padrão paramétrico `\((\sigma)\)` da população. 
+
+- Em contraste, o erro padrão da média torna-se uma estimativa mais precisa da média paramétrica `\((\mu)\)`, pois o erro padrão da média diminui.
+
+---
+
+### Teorema Central do Limite 
+
+Se `\(\bar{X}\)` é a média de uma amostra aleatória simples com reposição, de tamanho `\(n\)`, de uma população **normal**, com média `\(\mu\)` e variância `\(\sigma^2\)`, sua distribuição é **normal**, com média `\(\mu\)` e variância `\(\frac{\sigma^2}{n}\)`.
+
+Assim, em uma amostra aleatória simples com reposição, de tamanho `\(n\)`, de uma população arbitrária, com média `\(\mu\)` e variância `\(\sigma^2\)`, a distribuição de `\(\bar{X}\)` quando `\(n\)` é grande é  **aproximadamente  normal**, com média `\(\mu\)` e variância `\(\frac{\sigma^2}{n}\)`.
+
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/amostra_2.png" alt="" width="35%" style="display: block; margin: auto;" /&gt;
+---
+### Indução do conceito a partir do R
+
+#### Simulação de ume população não normal.
+
+
+``` r
+set.seed(1235)
+x &lt;- rep(0:9,
+                 c(800,700,200,350,120,
+                   500,1200,800,800,800)
+                 )
+```
+
+---
+#### Cálculo da esperança de X: `\(E(X) = \mu\)`.
+
+``` r
+mean(x)
+```
+
+```
+#&gt; [1] 5.028708
+```
+
+#### Cálculo da variância de X: `\(Var(X) = \sigma^2\)`.
+
+``` r
+var(x)
+```
+
+```
+#&gt; [1] 9.397804
+```
+
+---
+
+#### Distribuição de probabilidade.
+
+``` r
+hist(x, probability = TRUE,xlim = c(-.5,9.5))
+```
+
+&lt;img src="Aula04_files/figure-html/unnamed-chunk-71-1.png" alt="" style="display: block; margin: auto;" /&gt;
+
+
+---
+#### Definindo o tamanho da amostra `\(n\)`.
+
+``` r
+n &lt;- 5
+```
+
+#### Realizar uma amostragem aleatória simples, com reposição, de tamanho `\(n\)` e calcular a média e variância dessa amostra.
+
+``` r
+amostra &lt;- sample(x,n,replace = TRUE)
+mean(amostra)
+```
+
+```
+#&gt; [1] 5
+```
+
+``` r
+var(amostra)
+```
+
+```
+#&gt; [1] 9.5
+```
+
+
+---
+#### Realizar `\(k\)` amostragens de tamanho `\(n\)`, calcular as respectivas médias, construir a distribuição de probabilidade dessas médias com os cálculos da `\(E[\bar{X}]\)` e da `\(Var(\bar{X})\)`.
+
+
+``` r
+k &lt;- 10000
+vetor_medias &lt;- 0
+for(i in 1:k) vetor_medias[i] &lt;- mean(sample(x,n,replace=TRUE))
+```
+
+#### Cálculo da esperança de X: `\(E(\bar{X}) = \mu\)`.
+
+``` r
+mean(vetor_medias)
+```
+
+```
+#&gt; [1] 5.01418
+```
+
+#### Cálculo da variância de X: `\(Var(\bar{X}) = \frac{\sigma^2}{n}\)`.
+
+``` r
+var(vetor_medias)
+```
+
+```
+#&gt; [1] 1.856685
+```
+
+
+``` r
+hist(vetor_medias,xlim=c(0,10), probability = TRUE);box()
+```
+
+---
+
+### n = 5
+
+&lt;img src="Aula04_files/figure-html/unnamed-chunk-78-1.png" alt="" style="display: block; margin: auto;" /&gt;
+
+---
+### n = 15
+&lt;img src="Aula04_files/figure-html/unnamed-chunk-79-1.png" alt="" style="display: block; margin: auto;" /&gt;
+
+---
+
+### n = 50
+
+&lt;img src="Aula04_files/figure-html/unnamed-chunk-80-1.png" alt="" style="display: block; margin: auto;" /&gt;
+---
+class: middle, inverse, center
+
+# Acesse o Link para simularmos essa amostragem. Aba "Distribuição Amostral  - Média"
+
+## https://arpanosso.shinyapps.io/estatinfo/
+
+---
+
+## Transformação normal padrão para cálculo das probabilidades
+
+Assim, podemos utilizar a tabela normal padrão para o cálculo das probabilidades associadas aos intervalos de `\(\bar{X}\)` a partir da transformação:
+
+`$$Z = \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}}$$` 
+
+onde `\(\bar{X} \sim N(\mu, \frac{\sigma^2}{n})\)` e `\(n\)` é o tamanho da amostras aleatória simples tomada da população.
+
+---
+
+[Tabela - Normal Padrão](https://github.com/arpanosso/estatinfo/raw/master/docs/TabelaNormalPadrao.pdf) 
+
+&lt;img src="https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/hist_8.png" alt="" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+### Exercício
+
+Uma empresa de logística distribui pacotes cujo peso (em kg) segue uma distribuição `\(N(10;\, 0{,}25)\)`, ou seja, média `\(\mu = 10\,\text{kg}\)` e variância `\(\sigma^2 = 0{,}25\)` (desvio padrão `\(\sigma = 0{,}5\,\text{kg}\)`).
+
+&gt; **Pergunta:** Se o processo estiver sob controle, qual a probabilidade de, ao amostrar `\(n = 25\)` pacotes, observarmos uma média amostral `\(\bar{X}\)` que difira de `\(10\,\text{kg}\)` em **menos de `\(0{,}2\,\text{kg}\)`**?
+
+
+---
+
+**Resposta:** 
+
+`\(P(50-0{,}2828 \leq \bar{X} \leq 50+0{,}2828 ) = 0{,}9545\)`
+
+---
+
+### Amostras sem reposição de populações finitas
+
+Supondo uma população com `\(N\)` elementos, se a amostragem for feita **SEM REPOSIÇÃO**, temos as esperança e a variância definidas como:
+
+.pull-left[
+**Esperança**
+
+`\(E(\bar{X}) = \mu\)`
+]
+
+.pull-right[
+**Variância**
+
+`\(Var(\bar{X}) = \frac{\sigma^2}{n} \cdot \frac{N-n}{N-1}\)`
+
+]
+
+
+Observações, 
+
+`\(\mu = E(X)\)`, `\(\sigma^2 = Var(X)\)` e `\(\frac{N-n}{N-1}\)` é o fator de correção para populações finitas.
+
+A variância da média amostral com este tipo de amostragem é menor do que com reposição. Assim, amostragem sem reposição é mais eficiente do que a com reposição para estimar o valor médio `\((\mu)\)`. No entanto, se a população for grande quando comparada com o tamanho da amostra `\((n)\)`, o fator de correção será próximo de 1 e, portanto:
+$$Var(\bar{X}) \approx \frac{\sigma^2}{n} $$
+---
+
+class: middle, center, inverse
+
+# Distribuições Amostral da Proporção
+
+---
+
+### Distribuição Amostral da Proporção
+
+Anteriormente, definimos `\(X\)` uma `\(v.a.\)` para cada ensaio de **Bernoulli**, com `\(P(S) = p\)`. 
+
+Neste contexto, considerando `\(n\)` ensaios independentes, `\(X_1, X_2, ... , X_n\)` constitui uma amostra *aleatória simples com reposição*. Como os resultados individuais são `\(0\)` (fracasso) ou `\(1\)` (sucesso), o número **TOTAL** de sucessos em `\(n\)` ensaios, é dado por:
+
+`$$T = \sum \limits_{i=1}^n X_i$$`
+
+Portanto, a proporção amostral de suscessos em `\(n\)` ensaios é dada por:
+
+`$$\bar{X} = \hat{p} = \frac{T}{n} = \frac{\sum \limits_{i=1}^n X_i}{n}$$`
+
+Observe que `\(T\)` tem distribuição binomial com parâmetros `\(n\)` e `\(p\)`, cuja esperança (média) é `\(n.p\)` e variância `\(n.p.q\)` ou `\(n.p.(1-p)\)`.
+
+---
+
+Então, para a proporção, temos:
+
+
+.pull-left[
+**Esperança**  
+`\(E(\hat{p}) = E\left( \frac{T}{n} \right)\)`
+
+`\(E(\hat{p}) = \frac{1}{n} E(T)\)`
+
+`\(E(\hat{p}) = \frac{1}{n} n.p\)`
+
+`\(E(\hat{p}) = p\)`
+]
+
+.pull-right[
+**Variância**  
+`\(Var(\hat{p}) = Var\left( \frac{T}{n} \right)\)`
+
+`\(Var(\hat{p}) = \frac{1}{n^2} Var(T)\)`
+
+`\(Var(\hat{p}) = \frac{1}{n^2} n.p.q\)`
+
+`\(Var(\hat{p}) = \frac{p.q}{n}\)`
+]
+
+Assim, pelo **Teorema Central Limite**, quando `\(n\)`  é grande, a proporção amostral `\(\hat{p}\)` de sucessos em `\(n\)` ensaios de **Bernoulli** tem distribuição aproximadamente normal com média `\(p\)` e variância `\(\frac{p.q}{n}\)`, assim, podemos definir a variável padronizada `\(Z\)` como:   
+
+`$$Z = \frac{\hat{p} - p}{\sqrt{\frac{p.q}{n}}} \text{   ou   } Z = \frac{T - n.p}{\sqrt{n.p.q}}$$`
+
+
+Com distribuição aproximadamente normal padrão `\(N(0,1)\)`.
+
+
+---
+
+### Exercício
+
+Uma indústria sabe, por histórico de produção, que **70%** dos itens fabricados saem conformes (dentro das especificações técnicas). Em uma inspeção de rotina, um lote de **625 peças** é analisado.
+
+&gt; **Pergunta:** Qual a probabilidade de se encontrar **mais de 72%** das peças **conformes** nessa amostra?
+
+
+--
+
+**Resposta:** 
+
+`\(P(T \geq 450) = P(\hat{p} \geq 0{,}72) = P(Z \geq 1{,}09) = 0{,}13786\)`
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

@@ -368,7 +368,9 @@ X \begin{cases}
 \end{cases}
 $$
 
-com $P(X=1) = p$ e $P(X=0) = 1-p = q$
+com $P(X=1) = p$ e, consequentemente:
+
+$P(X=0) = 1-p = q$
 
 ---
 
@@ -520,16 +522,23 @@ $P(X=2) = {4 \choose 2} \left(\frac{1}{2}\right)^2 \cdot \left(\frac{1}{2}\right
 
 class: middle, center
 
-**Montando a fórmula na calculadora científica**
 
+```{r, echo=FALSE, out.width="10%", fig.align='left'}
+# knitr::include_graphics("imgs/R_logo.png")
+```
 
-![](img/calculadora10.png)
+```{r}
+# montanto a expressão
+choose(4,2)*1/2^2*1/2^(4-2)
 
+# ou utilizando a  função
+dbinom(2, 4, 1/2)
+```
 
 
 ---
 
-No R podemos utilizar a função `dbinon()` com os argumentos $x$, $n$ e $p$ a probabilidade de sucesso.
+Podemos utilizar a função `dbinon()` com os argumentos $x$, $n$ e $p$ a probabilidade de sucesso para calcular todas as probabilidades associadas aos elementos do espaço amostral.
 .pull-left[
 ```{r,eval=FALSE}
 n <- 4
@@ -629,10 +638,10 @@ tibble(x,px) |>
 --
 
 ### Respostas
-a) $0,3125$  
-b) $0,6562$  
-c) $0,6562$  
-d) $0,9844$  
+a) $0{,}3125$  
+b) $0{,}6562$  
+c) $0{,}6562$  
+d) $0{,}9844$  
 
 ---
 
@@ -648,6 +657,7 @@ Calcule a esperança e a variância dessa distribuição de probabilidade.
 
 $P(S) = p = \frac{2}{5}$ e, portanto, $P(F) = q = \frac{3}{5}$ 
 
+.pull-left[
 ```{r,echo=FALSE,out.width="50%",out.height="50%"}
 n <- 3
 x <- 0:n
@@ -658,7 +668,9 @@ tibble(x,px) |>   ggplot(aes(x=x,y=px)) +
   labs(title = "b(5,0.3)")+
   theme(plot.title = element_text(hjust = 0.5))
 ```
+]
 
+.pull-right[
 ```{r,echo=FALSE}
 tibble(x,px) %>%  
     tidyr::pivot_wider(names_from = x,
@@ -667,9 +679,9 @@ tibble(x,px) %>%
 ```
 
 
-$E(X) = 1,2$   
-$Var(X) = 0,72$
-
+$E(X) = 1{,}2$   
+$Var(X) = 0{,}72$
+]
 ---
 3) Uma urna contém $52$ bolas sendo $13$ brancas e $39$ pretas.
 
@@ -705,9 +717,9 @@ tibble(x,px) %>%
 ```
 
 
-a) $0,0002441$;  
-b) $E(X) = 1,5$ e $Var(X) = 1,125$;  
-c) $0,0043945$
+a) $0{,}0002441$;  
+b) $E(X) = 1{,}5$ e $Var(X) = 1{,}125$;  
+c) $0{,}0043945$
 
 ---
 
@@ -774,9 +786,17 @@ $$P(X=4) = \frac{e^{-2} \cdot 2^4}{4!} = 0,09022$$
 
 
 
-**Montando a fórmula na calculadora científica**
+```{r, echo=FALSE, out.width="10%", fig.align='left'}
+# knitr::include_graphics("imgs/R_logo.png")
+```
 
-![](img/calculadora11.png)
+```{r}
+# montanto a expressão
+exp(-2)*2^4/factorial(4)
+
+# ou utilizando a  função
+dpois(4,2) 
+```
 
 ---
 **Exercício 2)** Durante uma onda de calor intensa no verão em uma cidade do interior de São Paulo, o número de internações hospitalares por problemas de saúde relacionados ao calor (insolação, desidratação grave, insuficiência renal) por dia é uma variável aleatória que segue um modelo de Poisson com parâmetro $\lambda=5$, isto é, a média histórica registrada é de $5$ internações por dia nesses períodos.
@@ -989,13 +1009,13 @@ Sendo resultado de um processo de mensuração, o seu valor pode ser pensado com
 .pull-left[
 
 ```{r,out.width = "60%",fig.cap="",fig.align = 'center',echo=FALSE}
-knitr::include_graphics("https://images.pexels.com/photos/5063385/pexels-photo-5063385.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
+knitr::include_graphics("https://images.pexels.com/photos/8447778/pexels-photo-8447778.jpeg")
 ```
 ]
 
 .pull-right[
 
-Quando dizemos que a altura de uma criança é $125$, estamos medindo sua altura usando como unidade de medida o $cm$, e portanto o valor observado é, na realidade, um valor entre $124,5$ cm e $125,5$ cm, por exemplo.
+Quando dizemos que o comprimento de um pedaço de madeira é $20$, estamos usando como unidade de medida o $cm$, por exemplo e, portanto o valor observado é, na realidade, um valor entre $19{,}9$ cm e $20{,}1$ cm.
 ]
 
 
@@ -1158,7 +1178,7 @@ Onde:
 $$X \sim N(\mu; \sigma^2)$$
 
 
-```{r,out.width = "70%",fig.cap="",fig.align = 'center',echo=FALSE}
+```{r,out.width = "85%",fig.cap="",fig.align = 'center',echo=FALSE}
 knitr::include_graphics("https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/hist_2.png")
 ```
 
@@ -1187,11 +1207,6 @@ class: middle, inverse, center
 
 ## https://arpanosso.shinyapps.io/estatinfo/
 
----
-
-```{r,out.width = "90%",fig.cap="",fig.align = 'center',echo=FALSE}
-knitr::include_graphics("https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/hist_5.png")
-```
 
 ---
 
@@ -1275,7 +1290,7 @@ knitr::include_graphics("https://raw.githubusercontent.com/arpanosso/estatinfo/m
 ```
 ---
 
-### a) $P(-1,73 \le Z \le 0)$
+### a) $P(-1{,}73 \le Z \le 0)$
 
 
 ```{r}
@@ -1288,9 +1303,9 @@ knitr::include_graphics("https://raw.githubusercontent.com/arpanosso/estatinfo/m
 
 ---
 
-#### b) $P( Z \ge 1,73)$
+#### b) $P( Z \ge 1{,}73)$
 
-#### c) $P( Z \le -1,73)$
+#### c) $P( Z \le -1{,}73)$
 
 ```{r,out.width = "40%",fig.cap="",fig.align = 'center',echo=FALSE}
 knitr::include_graphics("https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/hist_11.png")
@@ -1306,7 +1321,7 @@ $$\begin{aligned} P( Z \ge 1,73) &= P( Z \le -1,73) \\ &= 0,5 - P(0 \le Z \le 1,
 
 ---
 
-#### d) $P(Z \le 1,73)$
+#### d) $P(Z \le 1{,}73)$
 
 
 ```{r,out.width = "40%",fig.cap="",fig.align = 'center',echo=FALSE}
@@ -1323,7 +1338,7 @@ $P( Z \le 1,73) = 0,5 + P(0 \le Z \le 1,73) = 0,5 +0,4582 = 0,9582$
 
 ---
 
-#### e) $P(0,47 \le Z \le 1,73)$
+#### e) $P(0{,}47 \le Z \le 1{,}73)$
 
 
 ```{r,out.width = "40%",fig.cap="",fig.align = 'center',echo=FALSE}
@@ -1335,7 +1350,7 @@ knitr::include_graphics("https://raw.githubusercontent.com/arpanosso/estatinfo/m
 pnorm(1.73) - pnorm(0.47)
 ```
 
-$$\begin{aligned}P(0,47 \le Z \le 1,73) &= P(0 \le Z \le 1,73)  - P(0 \le Z \le 0,47) \\ &= 0,4582 - 0,1808 = 0,2774\end{aligned}$$
+$$\begin{aligned}P(0,47 \le Z \le 1{,}73) &= P(0 \le Z \le 1{,}73)  - P(0 \le Z \le 0{,}47) \\ &= 0{,}4582 - 0{,}1808 = 0{,}2774\end{aligned}$$
 
 ---
 
@@ -1382,13 +1397,13 @@ P(X \geq 165) = P\left( \frac{X -\mu}{\sigma} > \frac{165-170}{5}\right) = P(Z \
 $$
 
 $$
-P(Z \geq -1) = P(-1 \leq Z \leq 0 ) + P(Z \geq 0) = P(0 \leq Z \leq 1 ) + 0,50
+P(Z \geq -1) = P(-1 \leq Z \leq 0 ) + P(Z \geq 0) = P(0 \leq Z \leq 1 ) + 0{,}50
 $$
 
 $$
-P(Z \geq -1) = 0,3413 + 0,50 = 0,8413
+P(Z \geq -1) = 0{,}3413 + 0{,}50 = 0{,}8413
 $$
-Portanto, o número esperado é $10.000 \times 0,8413 = 8413$ unidades.
+Portanto, o número esperado é $10.000 \times 0{,}8413 = 8413$ unidades.
 
 No R:
 
@@ -1485,9 +1500,9 @@ $P(7 \le X \le 10)$, por meio da aproximação normal à binomial.
 
 Resposta:
 
-$$P(7 \le X \le 10) = P \left( \frac{(\frac{7-0,50}{15})-0,40}{\sqrt{\frac{0,40(1-0,40)}{15}}} \le Z \le \frac{(\frac{10+0,50}{15})-0,40}{\sqrt{\frac{0,40(1-0,40)}{15}}} \right)$$
+$$P(7 \le X \le 10) = P \left( \frac{(\frac{7-0,50}{15})-0{,}40}{\sqrt{\frac{0{,}40(1-0{,}40)}{15}}} \le Z \le \frac{(\frac{10+0{,}50}{15})-0{,}40}{\sqrt{\frac{0{,}40(1-0{,}40)}{15}}} \right)$$
 
-$$P(0,263 \le Z \le 2,368) = 0,49111 - 0,10194 = 0,389$$
+$$P(0{,}263 \le Z \le 2{,}368) = 0{,}49111 - 0{,}10194 = 0{,}389$$
 
 no R:
 
@@ -1502,3 +1517,418 @@ pbinom(11,15,0.4) - pbinom(6,15,0.4)
 ```
 
 
+---
+
+class: middle, center, inverse
+
+# Distribuições Amostral
+
+---
+
+## Parâmetro e Estatística
+
+**Parâmetro**: é uma medida usada para descrever uma característica da população.
+
+
+**Estatística** ou **Estimador**: é qualquer função de uma amostra aleatória (fórmula ou expressão), construída com o propósito de servir como instrumento para descrever alguma característica da amostra e para fazer *inferência* a respeito da característica na população.  
+
+
+Resumo | Parâmetro | Estatística
+:---|:---:|:---:  
+Média | $\mu$ | $\bar{x}=\frac{1}{n} \sum \limits_{i=1}^n x_i$
+Variância | $\sigma^2$| $s^2 = \frac{1}{n-1} \sum \limits_{i=1}^n {(x_i - \mu)^2}$
+Proporção | $\pi$ | $\hat{p}= \frac{X}{n}$
+Correlação | $\rho$ | $r = \frac{\sum_{i=1}^n(x_1-\bar{x})(y_i-\bar{y})}{\sqrt{\sum_{i=1}^n(x_1-\bar{x})^2(y_i-\bar{y})^2}}$
+---
+
+Toda **estatística**, sendo uma função de uma amostra aleatória $X_1, X_2, \cdots X_n$, é também uma variável aleatória e tem uma distribuição. 
+
+Assim, o comportamento da estatística pode ser descrito por alguma distribuição de probabilidade, agora denominada **distribuição amostral**. 
+
+Assim, cada **estatística** é uma variável aleatória e sua distribuição de probabilidade é chamada <u>distribuição amostral da estatística</u>.
+
+```{r,out.width = "100%",fig.cap="",fig.align = 'center',echo=FALSE}
+knitr::include_graphics("https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/amostra_1.png")
+```
+
+---
+
+class: middle, center, inverse
+
+# Distribuições Amostral da Média
+
+---
+Seja a variável aleatória $X$ que denota o tempo em dias de germinação de sementes de uma espécie vegetal, após a semeadura. 
+
+Considerando a população de todas sementes dessa espécie, suponha que $X$ tem a distribuição de probabilidade apresentada abaixo. 
+
+Uma amostra aleatória simples **COM REPOSIÇÃO** $(X_1$, $X_2)$ de $2$ covas $(n = 2)$ é tomada nesta área. Qual a distribuição do tempo médio amostral em dias para a germinação?
+
+
+$x$ | $0$ | $1$ | $2$ | $3$ 
+---|---|---|---|---
+$P(X)$ | $0{,}20$ | $0{,}40$| $0{,}30$| $0{,}10$
+
+
+---
+
+.pull-left[
+
+Distribuição de Probabilidade
+
+```{r,echo=FALSE}
+x<-0:3
+px<-c(.2, .4, .3, .1)
+barplot(px, names=x,las=1,
+        ylim = c(0,.45))
+box()
+```
+]
+
+.pull-right[
+
+Calculando a Esperança de X: 
+
+$$E(X) = \sum \limits_{i=1}^k x_i \cdot P(x_i) = 1{,}30\;dias$$
+
+Calculando a Variância de X.
+
+$$\begin{aligned} Var(X) &= \sum \limits_{i=1}^k x_i^2 \cdot P(x_i) - [E(X)]^2 \\ Var(X) &= 0{,}81\;dias^2 \end{aligned}$$
+
+]
+
+Definimos a média a partir da tomada de duas amostras temos:
+
+$$\bar{X} = \frac{X_1+X_2}{2}$$
+
+---
+
+De acordo com a definição de amostra aleatória simples com reposição, $X_1$ e $X_2$ são variáveis aleatórias independentes, assim, a distribuição conjunta pode ser obtida multiplicando-se as probabilidades marginais.
+
+
+$$P(0 \cap 1) = P(0) \times P(1) = 0{,}2 \times 0,4 = 0{,},08$$
+
+.pull-left[
+Tabela com os possíveis valores de médias $\bar{X}$, dados os valores de $X$.
+
+$X_1 / X_2$ | 0 | 1 | 2 | 3 
+:---:|---|---|---|---
+**0** | 0,00 | 0,50 | 1,00 | 1,50
+**1** | 0,50 | 1,00 | 1,50 | 2,00
+**2** | 1,00 | 1,50 | 2,00 | 2,50
+**3** | 1,50 | 2,00 | 2,50 | 3,00
+ 
+]
+
+.pull-right[
+
+Tabela com a distribuição conjunta de $X_1$ e $X_2$, ou seja, as probabilidades $P(\bar{X})$.
+
+$X_1 / X_2$ | 0 | 1 | 2 | 3  | $\sum$
+:---:|---|---|---|---|---
+**0** | 0,04 | 0,08 | 0,06 | 0,02 | **0,2**
+**1** | 0,08 | 0,16 | 0,12 | 0,04 | **0,4**
+**2** | 0,06 | 0,12 | 0,09 | 0,03 | **0,3**
+**3** | 0,02 | 0,04 | 0,03 | 0,01 | **0,1**
+$\sum$| **0,2** | **0,4** | **0,3** | **0,1** | **1,00**
+]
+
+--
+
+</br>
+---
+
+
+Distribuição de probabilidade de $\bar{X}$.
+
+$\bar{X}$ | $0$ | $0{,}5$ | $1$ | $1{,}5$ | $2{,}0$  | $2{,}5$ | $3{,}0$  
+---|---|---|---|---|---|---|---
+$P(\bar{X})$ | $0{,}04$ | $0{,}16$| $0{,}28$| $0{,}28$ | $0{,}17$ | $0{,}06$ | $0{,}01$ 
+
+```{r, echo=FALSE}
+xb<-c(0,0.5,1,1.5,2,2.5,3)
+pxb<-c(.04, .16, .28, .28, .17, .06, .01)
+barplot(pxb, names=xb,las=1)
+```
+
+---
+
+#### Cálculo da Esperança e da Variância da Média do Número de dias para Germinação de $X$ $(n=2)$.
+
+$$E(\bar{X}) = \sum \limits_{n=1}^k = \bar{x_i} \cdot P(\bar{x_i}) = 1{,}30 \;dias$$
+
+$$Var(\bar{X}) = E(\bar{X}^2) - [E(\bar{X})]^2$$
+
+$$Var(\bar{X}) = 2{,}095 - (1{,}3)^2$$
+
+$$Var(\bar{X}) = 0{,}405\;dias^2= \frac{\sigma^2}{n} = \frac{0{,}81}{2} = \frac{Var(X)}{n}$$
+Se $X_1, X_2, \cdots, X_n$ constitui uma amostra aleatória simples com reposição de uma população que tem média $\mu$ e variância $\sigma^2$, então:
+
+$$E(\bar{X}) = \mu$$
+
+$$Var(\bar{X}) = \frac{\sigma^2}{n}$$ 
+
+$$DP(\bar{X}) = \frac{\sigma}{\sqrt{n}}$$
+
+---
+
+## Observações importantes
+
+- O desvio padrão da média $DP(\bar{X})$ e o erro padrão da média $s(m)$ são termos equivalentes. 
+
+- O erro padrão da média é geralmente usado para evitar confusão com o desvio padrão $(\sigma)$ das observações.
+
+- O aumento do tamanho da amostra $(n)$ o  desvio padrão da distribuição da média diminui, portanto os valores de $\bar{X}$ são mais próximos à $\mu$. 
+
+- Estima-se o erro padrão da média usando o tamanho da amostra $(n)$ e desvio padrão $(s)$ de uma única amostra de observações.
+
+- À medida que o tamanho da amostra aumenta temos uma estimativa mais precisa do desvio padrão paramétrico $(\sigma)$ da população. 
+
+- Em contraste, o erro padrão da média torna-se uma estimativa mais precisa da média paramétrica $(\mu)$, pois o erro padrão da média diminui.
+
+---
+
+### Teorema Central do Limite 
+
+Se $\bar{X}$ é a média de uma amostra aleatória simples com reposição, de tamanho $n$, de uma população **normal**, com média $\mu$ e variância $\sigma^2$, sua distribuição é **normal**, com média $\mu$ e variância $\frac{\sigma^2}{n}$.
+
+Assim, em uma amostra aleatória simples com reposição, de tamanho $n$, de uma população arbitrária, com média $\mu$ e variância $\sigma^2$, a distribuição de $\bar{X}$ quando $n$ é grande é  **aproximadamente  normal**, com média $\mu$ e variância $\frac{\sigma^2}{n}$.
+
+```{r,out.width = "35%",fig.cap="",fig.align = 'center',echo=FALSE}
+knitr::include_graphics("https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/amostra_2.png")
+```
+---
+### Indução do conceito a partir do R
+
+#### Simulação de ume população não normal.
+
+```{r}
+set.seed(1235)
+x <- rep(0:9,
+                 c(800,700,200,350,120,
+                   500,1200,800,800,800)
+                 )
+```
+
+---
+#### Cálculo da esperança de X: $E(X) = \mu$.
+```{r}
+mean(x)
+```
+
+#### Cálculo da variância de X: $Var(X) = \sigma^2$.
+```{r}
+var(x)
+```
+
+---
+
+#### Distribuição de probabilidade.
+```{r}
+hist(x, probability = TRUE,xlim = c(-.5,9.5))
+```
+
+
+---
+#### Definindo o tamanho da amostra $n$.
+```{r}
+n <- 5
+```
+
+#### Realizar uma amostragem aleatória simples, com reposição, de tamanho $n$ e calcular a média e variância dessa amostra.
+```{r}
+amostra <- sample(x,n,replace = TRUE)
+mean(amostra)
+var(amostra)
+```
+
+
+---
+#### Realizar $k$ amostragens de tamanho $n$, calcular as respectivas médias, construir a distribuição de probabilidade dessas médias com os cálculos da $E[\bar{X}]$ e da $Var(\bar{X})$.
+
+```{r}
+k <- 10000
+vetor_medias <- 0
+for(i in 1:k) vetor_medias[i] <- mean(sample(x,n,replace=TRUE))
+```
+
+#### Cálculo da esperança de X: $E(\bar{X}) = \mu$.
+```{r}
+mean(vetor_medias)
+```
+
+#### Cálculo da variância de X: $Var(\bar{X}) = \frac{\sigma^2}{n}$.
+```{r}
+var(vetor_medias)
+```
+
+```{r,eval=FALSE}
+hist(vetor_medias,xlim=c(0,10), probability = TRUE);box()
+```
+
+---
+
+### n = 5
+
+```{r, echo=FALSE}
+hist(vetor_medias,xlim=c(0,10), probability = TRUE);box()
+```
+
+---
+### n = 15
+```{r,echo=FALSE}
+n <- 15
+k <- 10000
+vetor_medias <- 0
+for(i in 1:k) vetor_medias[i] <- mean(sample(x,n,replace=TRUE))
+hist(vetor_medias,xlim=c(0,10),col="darkgray", probability = TRUE);box()
+```
+
+---
+
+### n = 50
+
+```{r,echo=FALSE}
+n <- 50
+k <- 10000
+vetor_medias <- 0
+for(i in 1:k) vetor_medias[i] <- mean(sample(x,n,replace=TRUE))
+hist(vetor_medias,xlim=c(0,10),col="aquamarine4", probability = TRUE);box()
+```
+---
+class: middle, inverse, center
+
+# Acesse o Link para simularmos essa amostragem. Aba "Distribuição Amostral  - Média"
+
+## https://arpanosso.shinyapps.io/estatinfo/
+
+---
+
+## Transformação normal padrão para cálculo das probabilidades
+
+Assim, podemos utilizar a tabela normal padrão para o cálculo das probabilidades associadas aos intervalos de $\bar{X}$ a partir da transformação:
+
+$$Z = \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}}$$ 
+
+onde $\bar{X} \sim N(\mu, \frac{\sigma^2}{n})$ e $n$ é o tamanho da amostras aleatória simples tomada da população.
+
+---
+
+[Tabela - Normal Padrão](https://github.com/arpanosso/estatinfo/raw/master/docs/TabelaNormalPadrao.pdf) 
+
+```{r,out.width = "100%",fig.cap="",fig.align = 'center',echo=FALSE}
+knitr::include_graphics("https://raw.githubusercontent.com/arpanosso/estatinfo/master/slides/img/hist_8.png")
+```
+
+---
+
+### Exercício
+
+Uma empresa de logística distribui pacotes cujo peso (em kg) segue uma distribuição $N(10;\, 0{,}25)$, ou seja, média $\mu = 10\,\text{kg}$ e variância $\sigma^2 = 0{,}25$ (desvio padrão $\sigma = 0{,}5\,\text{kg}$).
+
+> **Pergunta:** Se o processo estiver sob controle, qual a probabilidade de, ao amostrar $n = 25$ pacotes, observarmos uma média amostral $\bar{X}$ que difira de $10\,\text{kg}$ em **menos de $0{,}2\,\text{kg}$**?
+
+
+---
+
+**Resposta:** 
+
+$P(50-0{,}2828 \leq \bar{X} \leq 50+0{,}2828 ) = 0{,}9545$
+
+---
+
+### Amostras sem reposição de populações finitas
+
+Supondo uma população com $N$ elementos, se a amostragem for feita **SEM REPOSIÇÃO**, temos as esperança e a variância definidas como:
+
+.pull-left[
+**Esperança**
+
+$E(\bar{X}) = \mu$
+]
+
+.pull-right[
+**Variância**
+
+$Var(\bar{X}) = \frac{\sigma^2}{n} \cdot \frac{N-n}{N-1}$
+
+]
+
+
+Observações, 
+
+$\mu = E(X)$, $\sigma^2 = Var(X)$ e $\frac{N-n}{N-1}$ é o fator de correção para populações finitas.
+
+A variância da média amostral com este tipo de amostragem é menor do que com reposição. Assim, amostragem sem reposição é mais eficiente do que a com reposição para estimar o valor médio $(\mu)$. No entanto, se a população for grande quando comparada com o tamanho da amostra $(n)$, o fator de correção será próximo de 1 e, portanto:
+$$Var(\bar{X}) \approx \frac{\sigma^2}{n} $$
+---
+
+class: middle, center, inverse
+
+# Distribuições Amostral da Proporção
+
+---
+
+### Distribuição Amostral da Proporção
+
+Anteriormente, definimos $X$ uma $v.a.$ para cada ensaio de **Bernoulli**, com $P(S) = p$. 
+
+Neste contexto, considerando $n$ ensaios independentes, $X_1, X_2, ... , X_n$ constitui uma amostra *aleatória simples com reposição*. Como os resultados individuais são $0$ (fracasso) ou $1$ (sucesso), o número **TOTAL** de sucessos em $n$ ensaios, é dado por:
+
+$$T = \sum \limits_{i=1}^n X_i$$
+
+Portanto, a proporção amostral de suscessos em $n$ ensaios é dada por:
+
+$$\bar{X} = \hat{p} = \frac{T}{n} = \frac{\sum \limits_{i=1}^n X_i}{n}$$
+
+Observe que $T$ tem distribuição binomial com parâmetros $n$ e $p$, cuja esperança (média) é $n.p$ e variância $n.p.q$ ou $n.p.(1-p)$.
+
+---
+
+Então, para a proporção, temos:
+
+
+.pull-left[
+**Esperança**  
+$E(\hat{p}) = E\left( \frac{T}{n} \right)$
+
+$E(\hat{p}) = \frac{1}{n} E(T)$
+
+$E(\hat{p}) = \frac{1}{n} n.p$
+
+$E(\hat{p}) = p$
+]
+
+.pull-right[
+**Variância**  
+$Var(\hat{p}) = Var\left( \frac{T}{n} \right)$
+
+$Var(\hat{p}) = \frac{1}{n^2} Var(T)$
+
+$Var(\hat{p}) = \frac{1}{n^2} n.p.q$
+
+$Var(\hat{p}) = \frac{p.q}{n}$
+]
+
+Assim, pelo **Teorema Central Limite**, quando $n$  é grande, a proporção amostral $\hat{p}$ de sucessos em $n$ ensaios de **Bernoulli** tem distribuição aproximadamente normal com média $p$ e variância $\frac{p.q}{n}$, assim, podemos definir a variável padronizada $Z$ como:   
+
+$$Z = \frac{\hat{p} - p}{\sqrt{\frac{p.q}{n}}} \text{   ou   } Z = \frac{T - n.p}{\sqrt{n.p.q}}$$
+
+
+Com distribuição aproximadamente normal padrão $N(0,1)$.
+
+
+---
+
+### Exercício
+
+Uma indústria sabe, por histórico de produção, que **70%** dos itens fabricados saem conformes (dentro das especificações técnicas). Em uma inspeção de rotina, um lote de **625 peças** é analisado.
+
+> **Pergunta:** Qual a probabilidade de se encontrar **mais de 72%** das peças **conformes** nessa amostra?
+
+
+--
+
+**Resposta:** 
+
+$P(T \geq 450) = P(\hat{p} \geq 0{,}72) = P(Z \geq 1{,}09) = 0{,}13786$

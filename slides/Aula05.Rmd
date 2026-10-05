@@ -35,7 +35,7 @@ class: middle, center, inverse
 Tal afirmação é o que se chama **Hipótese Estatística** e a regra usada para decidir se ela é verdadeira ou não, é o **Teste de Hipóteses**. 
 
 ---
-**Exemplo 1**.  Uma empresa utiliza uma estratégia de marketing digital $A$ que resulta em uma média de $500 $ vendas mensais, com desvio padrão populacional de $(\sigma = 25)$ vendas. Uma agência de marketing afirma que sua nova estratégia $B$ pode elevar esse número para $510$ vendas mensais $(\sigma = 25)$ vendas. 
+**Exemplo 1**.  Uma empresa utiliza uma estratégia de marketing digital $A$ que resulta em uma média de $500$ vendas mensais, com desvio padrão populacional de $(\sigma = 25)$ vendas. Uma agência de marketing afirma que sua nova estratégia $B$ pode elevar esse número para $510$ vendas mensais $(\sigma = 25)$ vendas. 
 
 <img src = https://images.pexels.com/photos/7688102/pexels-photo-7688102.jpeg width="600">
 
